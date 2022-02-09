@@ -6,6 +6,10 @@ public class GameController : MonoBehaviour
 {
     public static GameController i;
 
+    public KeyboardWarriorSM keyboardWarriorSM;
+
+    public PlayerController playerController;
+
     private void Awake()
     {
         if (i == null)

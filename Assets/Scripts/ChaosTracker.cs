@@ -7,15 +7,12 @@ public class ChaosTracker : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _chaosPointsText = null;
 
-    int chaosPoints = 0;
-
-    public void GainChaosPoints(int points)
+    private void Start()
     {
-        chaosPoints += points;
-        SetText();
+        GameController.i.playerController.changeChaosPointsEvent += SetText;
     }
 
-    private void SetText()
+    private void SetText(int chaosPoints)
     {
         _chaosPointsText.text = "Chaos Points: " + chaosPoints.ToString();
     }
