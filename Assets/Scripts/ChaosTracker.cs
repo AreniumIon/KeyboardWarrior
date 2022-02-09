@@ -5,7 +5,7 @@ using TMPro;
 
 public class ChaosTracker : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _chaosPointsText;
+    [SerializeField] TextMeshProUGUI _chaosPointsText = null;
 
     int chaosPoints = 0;
 
