@@ -347,8 +347,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 823413339}
-        m_MethodName: SetMessagesTab
+      - m_Target: {fileID: 1093821905}
+        m_MethodName: ClickMessagesTab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -947,8 +947,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ebe0e4390e0b14ca761bbe6e386106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messagesTab: {fileID: 2116632079}
-  shopTab: {fileID: 1604460461}
+  backgroundObj: {fileID: 963253075}
+  foregroundObj: {fileID: 1093821900}
+  messagesObj: {fileID: 2116632079}
+  shopObj: {fileID: 1604460461}
 --- !u!4 &823413340
 Transform:
   m_ObjectHideFlags: 0
@@ -1045,8 +1047,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 823413339}
-        m_MethodName: SetShopTab
+      - m_Target: {fileID: 1093821905}
+        m_MethodName: ClickShopTab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1434,6 +1436,7 @@ GameObject:
   - component: {fileID: 1093821903}
   - component: {fileID: 1093821902}
   - component: {fileID: 1093821901}
+  - component: {fileID: 1093821905}
   m_Layer: 5
   m_Name: Foreground Canvas
   m_TagString: Untagged
@@ -1523,6 +1526,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1093821905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093821900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693b0e8cf0f17a94ba5c38565325b56e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1164247916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,6 +1925,7 @@ GameObject:
   - component: {fileID: 1397818954}
   - component: {fileID: 1397818953}
   - component: {fileID: 1397818955}
+  - component: {fileID: 1397818957}
   - component: {fileID: 1397818956}
   m_Layer: 0
   m_Name: KeyboardWarriorSM
@@ -1978,7 +1994,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1397818951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88670b09cbe587342af9993bfcab2624, type: 3}
+  m_Script: {fileID: 11500000, guid: b4b55444d9140534d9d7c5f9e7ffd9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1397818957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397818951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56ec451988131f4ba93116163ca6d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1604460461

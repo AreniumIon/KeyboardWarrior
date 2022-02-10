@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : KeyboardWarriorState
+public class MessagesState : KeyboardWarriorState
 {
     public override void Enter()
     {
+        GameController.i.uiController.SetMessagesTab(true);
     }
 
     public override void Tick()
@@ -17,5 +18,6 @@ public class GameState : KeyboardWarriorState
 
     public override void Exit()
     {
+        GameController.i.uiController.SetMessagesTab(false);
     }
 }

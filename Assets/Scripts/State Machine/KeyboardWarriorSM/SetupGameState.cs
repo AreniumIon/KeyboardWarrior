@@ -19,7 +19,7 @@ public class SetupGameState : KeyboardWarriorState
         if (activated == false)
         {
             activated = true;
-            stateMachine.ChangeState<GameState>();
+            stateMachine.ChangeState<MessagesState>();
         }
     }
 

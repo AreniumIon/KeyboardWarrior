@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] GameObject messagesTab;
-    [SerializeField] GameObject shopTab;
+    [SerializeField] GameObject backgroundObj;
+    [SerializeField] GameObject foregroundObj;
+
+    [SerializeField] GameObject messagesObj;
+    [SerializeField] GameObject shopObj;
     // [SerializeField] GameObject expertsTab;
 
-    public void SetMessagesTab()
+    public void SetMessagesTab(bool active)
     {
-        shopTab.SetActive(false);
-        messagesTab.SetActive(true);
+        messagesObj.SetActive(active);
     }
 
-    public void SetShopTab()
+    public void SetShopTab(bool active)
     {
-        messagesTab.SetActive(false);
-        shopTab.SetActive(true);
+        shopObj.SetActive(active);
     }
 }
