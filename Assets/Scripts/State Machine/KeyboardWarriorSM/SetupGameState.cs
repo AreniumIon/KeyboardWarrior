@@ -25,6 +25,10 @@ public class SetupGameState : KeyboardWarriorState
 
     public override void Exit()
     {
+        // Disable all tabs on startup
+        GameController.i.uiController.SetMessagesTab(false);
+        GameController.i.uiController.SetShopTab(false);
+
         activated = false;
     }
 
