@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
 
     public PlayerController playerController;
 
+    public UIController uiController;
+
     private void Awake()
     {
         if (i == null)
