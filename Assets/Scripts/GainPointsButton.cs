@@ -11,8 +11,8 @@ public class GainPointsButton : MonoBehaviour
     {
         PlayerController playerController = GameController.i.playerController;
 
-        playerController.changePointsPerClickEvent += UpdateButton;
-        UpdateButton(playerController.PointsPerClick);
+        playerController.playerUpgrades.changePointsPerClickEvent += UpdateButton;
+        UpdateButton(playerController.playerUpgrades.PointsPerClick);
     }
 
     public void UpdateButton(int pointsPerClick)
@@ -22,6 +22,6 @@ public class GainPointsButton : MonoBehaviour
 
     public void GainPoints()
     {
-        GameController.i.playerController.ChaosPoints += GameController.i.playerController.PointsPerClick;
+        GameController.i.playerController.playerResources.ChaosPoints += GameController.i.playerController.playerUpgrades.PointsPerClick;
     }
 }

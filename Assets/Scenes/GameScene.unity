@@ -1750,6 +1750,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1758700868}
   - component: {fileID: 1758700869}
+  - component: {fileID: 1758700871}
+  - component: {fileID: 1758700870}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -1784,6 +1786,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   username: DefaultUsername
+  playerResources: {fileID: 1758700871}
+  playerUpgrades: {fileID: 1758700870}
+--- !u!114 &1758700870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758700867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f6a0c639fe329e4382abd02f1e383c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1758700871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758700867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c03af35c445625488449ef3421a9f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1848115621
 GameObject:
   m_ObjectHideFlags: 0
