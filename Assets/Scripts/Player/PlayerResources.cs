@@ -14,7 +14,7 @@ public class PlayerResources : MonoBehaviour
         if (chaosPoints < amount)
             return false;
 
-        chaosPoints -= amount;
+        ChaosPoints -= amount;
         return true;
     }
 
