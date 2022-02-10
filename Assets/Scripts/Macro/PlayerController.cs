@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour
 
     int chaosPoints = 0;
     public int ChaosPoints { get => chaosPoints; set { chaosPoints = value; changeChaosPointsEvent?.Invoke(chaosPoints); } }
-
     public event Action<int> changeChaosPointsEvent;
+
+    int pointsPerClick = 1;
+    public int PointsPerClick { get => pointsPerClick; set { pointsPerClick = value; changePointsPerClickEvent?.Invoke(pointsPerClick); } }
+    public event Action<int> changePointsPerClickEvent;
 
 }
