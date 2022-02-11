@@ -4,9 +4,11 @@ using UnityEngine;
 
 public abstract class UpgradeInfo
 {
+    public abstract string Name { get; }
+    public bool unlocked = true;
+
     // Should upgrades be one-time purchases or multiple times?
     // Maybe we do both, in which case I'd make two child classes
-    public bool unlocked = true;
     public int upgrades = 0;
 
     protected abstract int BaseCost { get; }
@@ -17,5 +19,5 @@ public abstract class UpgradeInfo
         return BaseCost + ScaleCost * upgrades;
     }
 
-    public abstract void DoUpgrade();
+    public virtual void DoUpgrade() { upgrades += 1; }
 }
