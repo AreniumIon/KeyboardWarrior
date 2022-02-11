@@ -5,18 +5,26 @@ using System;
 
 public class PlayerResources : MonoBehaviour
 {
-    int chaosPoints = 0;
-    public int ChaosPoints { get => chaosPoints; set { chaosPoints = value; changeChaosPointsEvent?.Invoke(chaosPoints); } }
-    public event Action<int> changeChaosPointsEvent;
+    int cp = 0;
+    public int CP { get => cp; set { cp = value; changeCPEvent?.Invoke(cp); } }
+    public event Action<int> changeCPEvent;
 
-    public bool SpendChaos(int amount)
+    public bool SpendCP(int amount)
     {
-        if (chaosPoints < amount)
+        if (cp < amount)
             return false;
 
-        ChaosPoints -= amount;
+        CP -= amount;
         return true;
     }
+
+    int cpPerClick = 1;
+    public int CPPerClick { get => cpPerClick; set { cpPerClick = value; changeCPPerClickEvent?.Invoke(cpPerClick); } }
+    public event Action<int> changeCPPerClickEvent;
+
+    int cpPerSecond = 0;
+    public int CPPerSecond { get => cpPerSecond; set { cpPerSecond = value; changeCPPerSecondEvent?.Invoke(cpPerSecond); } }
+    public event Action<int> changeCPPerSecondEvent;
 
     // TODO: Followers, experts, flags
 }

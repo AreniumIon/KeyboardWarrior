@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UpgradeConstants;
 
 public abstract class UpgradeInfo
 {
+    public abstract UpgradeType Type { get; }
     public abstract string Name { get; }
+    
     public bool unlocked = true;
 
     // Should upgrades be one-time purchases or multiple times?
@@ -14,7 +17,7 @@ public abstract class UpgradeInfo
     protected abstract int BaseCost { get; }
     protected abstract int ScaleCost { get; }
 
-    public int GetCost(int upgrades)
+    public int GetCost()
     {
         return BaseCost + ScaleCost * upgrades;
     }

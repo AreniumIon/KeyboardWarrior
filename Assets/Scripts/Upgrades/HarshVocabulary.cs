@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UpgradeConstants;
 
-public class CommentBot : UpgradeInfo
+public class HarshVocabulary : UpgradeInfo
 {
-    public override UpgradeType Type => UpgradeType.Comment_Bot;
-    public override string Name => "Comment Bot";
+    public override UpgradeType Type => UpgradeType.Harsh_Vocabulary;
+    public override string Name => "Harsh Vocabulary";
 
     protected override int BaseCost => 5;
 
@@ -15,7 +15,6 @@ public class CommentBot : UpgradeInfo
     public override void DoUpgrade()
     {
         GameController.i.playerController.playerResources.CPPerClick += 1;
-        //GameController.i.playerController.playerResources.CPPerSecond += 1;
         base.DoUpgrade();
     }
 }
