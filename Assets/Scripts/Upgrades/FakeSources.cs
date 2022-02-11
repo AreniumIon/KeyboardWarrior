@@ -7,6 +7,7 @@ public class FakeSources : UpgradeInfo
 {
     public override UpgradeType Type => UpgradeType.Fake_Sources;
     public override string Name => "Fake Sources";
+    public override string Description => "Clicks give 1 more Chaos.";
 
     protected override int BaseCost => 5;
 

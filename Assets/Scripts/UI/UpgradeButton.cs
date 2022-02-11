@@ -8,11 +8,9 @@ using static UpgradeConstants;
 public class UpgradeButton : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] TextMeshProUGUI costText;
     [SerializeField] UpgradeType upgradeType;
-
-    // TODO: Upgrade count should be stored externally. Maybe in PlayerUpgrades?
-    int upgrades = 0;
 
     public void Start()
     {
@@ -20,6 +18,7 @@ public class UpgradeButton : MonoBehaviour
         UpgradeInfo upgradeInfo = playerController.playerUpgrades.upgradeInfos[upgradeType];
 
         UpdateNameText(upgradeInfo);
+        UpdateDescriptionText(upgradeInfo);
         UpdateCostText(upgradeInfo);
     }
 
@@ -43,6 +42,11 @@ public class UpgradeButton : MonoBehaviour
     private void UpdateNameText(UpgradeInfo upgradeInfo)
     {
         nameText.text = upgradeInfo.Name;
+    }
+
+    private void UpdateDescriptionText(UpgradeInfo upgradeInfo)
+    {
+        descriptionText.text = upgradeInfo.Description;
     }
 
     private void UpdateCostText(UpgradeInfo upgradeInfo)

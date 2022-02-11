@@ -7,6 +7,7 @@ public class CommentBot : UpgradeInfo
 {
     public override UpgradeType Type => UpgradeType.Comment_Bot;
     public override string Name => "Comment Bot";
+    public override string Description => "Clicks give 1 more Chaos.";
 
     protected override int BaseCost => 5;
 

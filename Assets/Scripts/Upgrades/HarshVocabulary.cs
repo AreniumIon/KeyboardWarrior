@@ -7,6 +7,7 @@ public class HarshVocabulary : UpgradeInfo
 {
     public override UpgradeType Type => UpgradeType.Harsh_Vocabulary;
     public override string Name => "Harsh Vocabulary";
+    public override string Description => "Clicks give 1 more Chaos.";
 
     protected override int BaseCost => 5;
 

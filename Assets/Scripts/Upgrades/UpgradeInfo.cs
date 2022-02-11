@@ -7,7 +7,8 @@ public abstract class UpgradeInfo
 {
     public abstract UpgradeType Type { get; }
     public abstract string Name { get; }
-    
+    public abstract string Description { get; }
+
     public bool unlocked = true;
 
     // Should upgrades be one-time purchases or multiple times?
