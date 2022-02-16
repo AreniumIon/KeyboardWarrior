@@ -7,9 +7,9 @@ using static UpgradeConstants;
 
 public class UpgradeButton : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI nameText;
-    [SerializeField] TextMeshProUGUI descriptionText;
-    [SerializeField] TextMeshProUGUI costText;
+    [SerializeField] TextMeshProUGUI nameText = null;
+    [SerializeField] TextMeshProUGUI descriptionText = null;
+    [SerializeField] TextMeshProUGUI costText = null;
     [SerializeField] UpgradeType upgradeType;
 
     public void Start()
