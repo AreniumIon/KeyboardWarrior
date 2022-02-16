@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class CommentScript : MonoBehaviour
 {
@@ -26,7 +27,15 @@ public class CommentScript : MonoBehaviour
         //_buttonText.text = "+" + pointsPerClick + " Chaos";
     }
 
-    public void GainPoints()
+    public static event Action commentEvent;
+
+    public void Click()
+    {
+        GainPoints();
+        commentEvent?.Invoke();
+    }
+
+    private void GainPoints()
     {
         risk = 0;
         commentMod = 1f;
@@ -61,7 +70,7 @@ public class CommentScript : MonoBehaviour
         if (risk > 0)
         {
             //determine if player is striked for comment
-            float diceRoll = Random.Range(0f, 100f);
+            float diceRoll = UnityEngine.Random.Range(0f, 100f);
             float totalRisk = risk + GameController.i.playerController.playerResources.Reputation;
             Debug.Log("Diceroll == " + diceRoll + " Total Risk == " + (totalRisk));
             if (diceRoll < totalRisk)
