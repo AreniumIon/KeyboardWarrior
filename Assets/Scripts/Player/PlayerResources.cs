@@ -45,6 +45,7 @@ public class PlayerResources : MonoBehaviour
     public event Action<float> changeSarcasmModEvent;
 
     // comment risk modifiers
+
     float trollRisk = 10f;
     public float TrollRisk { get => trollRisk; set { trollRisk = value; changeTrollRiskEvent?.Invoke(trollRisk); } }
     public event Action<float> changeTrollRiskEvent;

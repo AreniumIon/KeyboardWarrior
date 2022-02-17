@@ -7,9 +7,11 @@ using System;
 public class CommentScript : MonoBehaviour
 {
     //[SerializeField] TextMeshProUGUI _buttonText;
+    [SerializeField] TextMeshProUGUI _riskText = null;
     [SerializeField] int buttonType = 0;
     float commentMod = 1f;
     float risk = 0f;
+    float totalRisk = 0f;
     float riskPercent = 10f;
     float riskReduction = 2f;
     int gainThisTurn = 0;
@@ -21,13 +23,33 @@ public class CommentScript : MonoBehaviour
     {
         PlayerController playerController = GameController.i.playerController;
 
-        playerController.playerResources.changeCPPerClickEvent += UpdateButton;
+        playerController.playerResources.changeReputationEvent += UpdateButton;
         UpdateButton(playerController.playerResources.CPPerClick);
     }
 
-    public void UpdateButton(int pointsPerClick)
+    public void UpdateButton(float repChange)
     {
         //_buttonText.text = "+" + pointsPerClick + " Chaos";
+        if (_riskText != null)
+        {
+            //change modifier value based on button type
+            switch (buttonType)
+            {
+                default:// ButtonType Default: Normal 
+                    break;
+
+                case 1:// ButtonType 2 == Sarcasm
+                    risk = GameController.i.playerController.playerResources.SarcasmRisk;
+                    break;
+
+                case 2: // ButtonType 2 == Trolling 
+                    risk = GameController.i.playerController.playerResources.TrollRisk;
+                    break;
+            }
+            totalRisk = risk + GameController.i.playerController.playerResources.Reputation; //repChange
+
+            _riskText.text = string.Format("Risk: {0:#.00} % ", totalRisk);
+        }
     }
 
     public static event Action commentEvent;
@@ -41,9 +63,6 @@ public class CommentScript : MonoBehaviour
 
     private void GainPoints()
     {
-        risk = 0;
-        commentMod = 1f;
-
         //change modifier value based on button type
         switch (buttonType)
         {
@@ -75,7 +94,7 @@ public class CommentScript : MonoBehaviour
         {
             //determine if player is striked for comment
             float diceRoll = UnityEngine.Random.Range(0f, 100f);
-            float totalRisk = risk + GameController.i.playerController.playerResources.Reputation;
+            totalRisk = risk + GameController.i.playerController.playerResources.Reputation;
             Debug.Log("Diceroll == " + diceRoll + " Total Risk == " + (totalRisk));
             if (diceRoll < totalRisk)
             {
