@@ -13,6 +13,16 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject createAccountCanvas;
     // [SerializeField] GameObject expertsCanvas;
 
+    public void SetBackgroundCanvas(bool active)
+    {
+        backgroundCanvas.SetActive(active);
+    }
+
+    public void SetForegroundCanvas(bool active)
+    {
+        foregroundCanvas.SetActive(active);
+    }
+
     public void SetMessagesCanvas(bool active)
     {
         messagesCanvas.SetActive(active);

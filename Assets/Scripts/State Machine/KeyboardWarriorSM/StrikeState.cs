@@ -6,6 +6,7 @@ public class StrikeState : KeyboardWarriorState
 {
     public override void Enter()
     {
+        GameController.i.uiController.SetForegroundCanvas(false);
         GameController.i.uiController.SetStrikeCanvas(true);
     }
 

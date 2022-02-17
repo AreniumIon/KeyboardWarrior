@@ -29,8 +29,11 @@ public class SetupGameState : KeyboardWarriorState
     public override void Exit()
     {
         // Disable all tabs on startup
+        GameController.i.uiController.SetForegroundCanvas(false);
         GameController.i.uiController.SetMessagesCanvas(false);
         GameController.i.uiController.SetShopCanvas(false);
+        GameController.i.uiController.SetStrikeCanvas(false);
+        GameController.i.uiController.SetCreateAccountCanvas(false);
 
         activated = false;
     }

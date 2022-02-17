@@ -7,6 +7,7 @@ public class CreateAccountState : KeyboardWarriorState
     public override void Enter()
     {
         ResetAccount();
+        GameController.i.uiController.SetForegroundCanvas(false);
         GameController.i.uiController.SetCreateAccountCanvas(true);
     }
 

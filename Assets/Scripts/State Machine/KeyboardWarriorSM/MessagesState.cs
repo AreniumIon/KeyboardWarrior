@@ -6,6 +6,7 @@ public class MessagesState : KeyboardWarriorState
 {
     public override void Enter()
     {
+        GameController.i.uiController.SetForegroundCanvas(true);
         GameController.i.uiController.SetMessagesCanvas(true);
     }
 

@@ -6,6 +6,7 @@ public class ShopState : KeyboardWarriorState
 {
     public override void Enter()
     {
+        GameController.i.uiController.SetForegroundCanvas(true);
         GameController.i.uiController.SetShopCanvas(true);
     }
 
