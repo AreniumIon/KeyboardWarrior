@@ -25,10 +25,10 @@ public class ProfileDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // AssignNewProfile();
+       //AssignNewProfile();
     }
 
-    private void AssignNewProfile()
+    public void AssignNewProfile()
     {
         randHead = Random.Range(0, _npcProfile._head.Length);
         _pfpHead.sprite = _npcProfile._head[randHead];

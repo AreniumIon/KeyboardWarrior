@@ -10,10 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 995d60c2684e94c449daf0536380b25a, type: 3}
-  m_Name: New NPC Profile
+  m_Name: NPC Profile
   m_EditorClassIdentifier: 
-  _head: []
-  _body: []
-  _eyes: []
-  _mouth: []
-  _background: []
+  _head:
+  - {fileID: 21300000, guid: 06fe0e93c9550e54f823ba52c7e517a0, type: 3}
+  - {fileID: 21300000, guid: 3a6277fb80f8f8544a84d2103496746a, type: 3}
+  - {fileID: 21300000, guid: c713298f493f1ba4a85cb60aef64f4f7, type: 3}
+  _body:
+  - {fileID: 21300000, guid: 9c8e9b8a89b879f49bb322645a4e69de, type: 3}
+  - {fileID: 21300000, guid: 788716eac859800409d473ff2d3f1446, type: 3}
+  - {fileID: 21300000, guid: 1fe3a9fee574cf046b5a6273e601b118, type: 3}
+  _eyes:
+  - {fileID: 21300000, guid: 6286cd2cbe1a6c049af8e61eeaede3ba, type: 3}
+  - {fileID: 21300000, guid: 7b0f7a255f29d2847812507ac5135d80, type: 3}
+  - {fileID: 21300000, guid: 9ffdf867ce139ff4283b39122f79e20a, type: 3}
+  _mouth:
+  - {fileID: 21300000, guid: 33246e24d19ba5a45a6d3acfd65ac937, type: 3}
+  - {fileID: 21300000, guid: e5589e2c558b63b45abbbba49432de25, type: 3}
+  - {fileID: 21300000, guid: 986d693afbf90534ab793457747110ed, type: 3}
+  _background:
+  - {fileID: 21300000, guid: 15f3d078471a90547a62934beeb9077a, type: 3}
+  - {fileID: 21300000, guid: 4a0c21a57f7efb040a814107adfdb779, type: 3}
+  - {fileID: 21300000, guid: de89954739a92044b842d6a6e11410d3, type: 3}

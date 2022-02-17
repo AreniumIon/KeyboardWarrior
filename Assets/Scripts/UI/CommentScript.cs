@@ -14,6 +14,9 @@ public class CommentScript : MonoBehaviour
     float riskReduction = 2f;
     int gainThisTurn = 0;
 
+    //profile controller reference
+    [SerializeField] ProfileDisplay _profileRoot;
+
     private void Start()
     {
         PlayerController playerController = GameController.i.playerController;
@@ -33,6 +36,7 @@ public class CommentScript : MonoBehaviour
     {
         GainPoints();
         commentEvent?.Invoke();
+        _profileRoot.AssignNewProfile();
     }
 
     private void GainPoints()
