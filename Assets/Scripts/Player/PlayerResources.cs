@@ -56,23 +56,4 @@ public class PlayerResources : MonoBehaviour
 
     // TODO: Followers, experts, flags
 
-    private void Start()
-    {
-        changeStrikesEvent += CheckResetAccount;
-    }
-
-    public void CheckResetAccount(int strikes)
-    {
-        if (strikes >= 3)
-            ResetAccount();
-    }
-
-    public void ResetAccount()
-    {
-        //reset account
-        // aka, points, reputation, and strikes
-        GameController.i.playerController.playerResources.CP = 0;
-        GameController.i.playerController.playerResources.Reputation = 0;
-        GameController.i.playerController.playerResources.Strikes = 0;
-    }
 }

@@ -31,6 +31,13 @@ public class WarningButton : MonoBehaviour
 
     public void OnClick()
     {
-        GameController.i.keyboardWarriorSM.ChangeState<MessagesState>();
+        if (GameController.i.playerController.playerResources.Strikes < 3)
+        {
+            GameController.i.keyboardWarriorSM.ChangeState<MessagesState>();
+        }
+        else
+        {
+            GameController.i.keyboardWarriorSM.ChangeState<CreateAccountState>();
+        }
     }
 }
