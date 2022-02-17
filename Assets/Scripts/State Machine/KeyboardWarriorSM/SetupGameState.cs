@@ -11,6 +11,9 @@ public class SetupGameState : KeyboardWarriorState
     {
         CreatePlayer();
 
+        GameController.i.playerController.playerResources.changeStrikesEvent += (strikes) => stateMachine.ChangeState<StrikeState>();
+
+
         activated = false;
     }
 
