@@ -102,6 +102,7 @@ public class CommentScript : MonoBehaviour
                 GameController.i.playerController.playerResources.Reputation /= riskReduction;
                 // dice rolled lower; punish the player with a strike
                 GameController.i.playerController.playerResources.Strikes += 1;
+                GameController.i.keyboardWarriorSM.ChangeState<StrikeState>();
             }
             else
             {

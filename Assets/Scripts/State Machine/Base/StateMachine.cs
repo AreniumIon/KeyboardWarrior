@@ -40,11 +40,11 @@ public abstract class StateMachine : MonoBehaviour
         }
         else if (currentState == targetState)
         {
-            Debug.LogWarning("Attempted to transition from " + currentState.name + " to itself.");
+            Debug.LogWarning("Attempted to transition from " + currentState.GetType().Name + " to itself.");
         }
         else if (InTransition)
         {
-            Debug.LogWarning("Attempted to transition from " + currentState.name + " to " + targetState.name + " while in transition.");
+            Debug.LogWarning("Attempted to transition from " + currentState.GetType().Name + " to " + targetState.GetType().Name + " while in transition.");
         }
     }
 
