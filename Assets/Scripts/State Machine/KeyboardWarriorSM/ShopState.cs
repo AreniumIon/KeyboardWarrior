@@ -6,7 +6,7 @@ public class ShopState : KeyboardWarriorState
 {
     public override void Enter()
     {
-        GameController.i.uiController.SetShopTab(true);
+        GameController.i.uiController.SetShopCanvas(true);
     }
 
     public override void Tick()
@@ -18,6 +18,6 @@ public class ShopState : KeyboardWarriorState
 
     public override void Exit()
     {
-        GameController.i.uiController.SetShopTab(false);
+        GameController.i.uiController.SetShopCanvas(false);
     }
 }

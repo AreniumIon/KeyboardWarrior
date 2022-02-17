@@ -6,7 +6,7 @@ public class MessagesState : KeyboardWarriorState
 {
     public override void Enter()
     {
-        GameController.i.uiController.SetMessagesTab(true);
+        GameController.i.uiController.SetMessagesCanvas(true);
     }
 
     public override void Tick()
@@ -18,6 +18,6 @@ public class MessagesState : KeyboardWarriorState
 
     public override void Exit()
     {
-        GameController.i.uiController.SetMessagesTab(false);
+        GameController.i.uiController.SetMessagesCanvas(false);
     }
 }

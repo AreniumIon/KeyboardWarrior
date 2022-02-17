@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] GameObject backgroundObj;
-    [SerializeField] GameObject foregroundObj;
+    [SerializeField] GameObject backgroundCanvas;
+    [SerializeField] GameObject foregroundCanvas;
 
-    [SerializeField] GameObject messagesObj;
-    [SerializeField] GameObject shopObj;
-    // [SerializeField] GameObject expertsTab;
+    [SerializeField] GameObject messagesCanvas;
+    [SerializeField] GameObject shopCanvas;
+    [SerializeField] GameObject strikeCanvas;
+    [SerializeField] GameObject createAccountCanvas;
+    // [SerializeField] GameObject expertsCanvas;
 
-    public void SetMessagesTab(bool active)
+    public void SetMessagesCanvas(bool active)
     {
-        messagesObj.SetActive(active);
+        messagesCanvas.SetActive(active);
     }
 
-    public void SetShopTab(bool active)
+    public void SetShopCanvas(bool active)
     {
-        shopObj.SetActive(active);
+        shopCanvas.SetActive(active);
+    }
+
+    public void SetStrikeCanvas(bool active)
+    {
+        strikeCanvas.SetActive(active);
+    }
+
+    public void SetCreateAccountCanvas(bool active)
+    {
+        createAccountCanvas.SetActive(active);
     }
 }
