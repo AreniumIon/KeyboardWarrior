@@ -90,6 +90,36 @@ public class CommentScript : MonoBehaviour
         //add points to player's total
         GameController.i.playerController.playerResources.CP += gainThisTurn;
 
+        //add followers to player
+        AddFollowers();
+
+        //determine risk of player's comment
+        Risk();
+    }
+
+    void AddFollowers()
+    {
+        //Debug.Log("Cause you gotta have friends!~");
+        int totalCP = GameController.i.playerController.playerResources.CP;
+        int followerGain = 0;
+
+        if(buttonType == 1)
+        {
+            //sarcastic follower gain: 5% of current CP
+            followerGain += (int)Mathf.Round(totalCP * .05f);
+        }
+        else if(buttonType == 2)
+        {
+            //troll follower gain: 10% of current CP
+            followerGain += (int)Mathf.Round(totalCP * .1f);
+        }
+
+        Debug.Log("Followers gained: " + followerGain);
+        GameController.i.playerController.playerResources.Followers += followerGain;
+    }
+
+    void Risk()
+    {
         if (risk > 0)
         {
             //determine if player is striked for comment

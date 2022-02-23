@@ -54,6 +54,20 @@ public class PlayerResources : MonoBehaviour
     public float SarcasmRisk { get => sarcasmRisk; set { sarcasmRisk = value; changeSarcasmRiskEvent?.Invoke(sarcasmRisk); } }
     public event Action<float> changeSarcasmRiskEvent;
 
+    // followers
+
+    int followers = 0;
+    public int Followers { get => followers; set { followers = value; changeFollowersEvent?.Invoke(followers); } }
+    public event Action<int> changeFollowersEvent;
+
+    float followerCPTime = 2f;
+    public float FollowerCPTime { get => followerCPTime; set { followerCPTime = value; changeFollowerCPTimeEvent?.Invoke(followerCPTime); } }
+    public event Action<float> changeFollowerCPTimeEvent;
+
+    int followerCPGain = 1;
+    public int FollowerCPGain { get => followerCPGain; set { followerCPGain = value; changeFollowerCPGainEvent?.Invoke(followerCPGain); } }
+    public event Action<int> changeFollowerCPGainEvent;
+
     // TODO: Followers, experts, flags
 
 }
