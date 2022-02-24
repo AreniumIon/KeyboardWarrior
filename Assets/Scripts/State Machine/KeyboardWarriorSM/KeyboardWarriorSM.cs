@@ -6,6 +6,6 @@ public class KeyboardWarriorSM : StateMachine
 {
     private void Start()
     {
-        ChangeState<SetupGameState>();
+        ChangeState<CreateAccountState>();
     }
 }
