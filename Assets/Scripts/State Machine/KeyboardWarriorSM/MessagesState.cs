@@ -6,19 +6,12 @@ public class MessagesState : KeyboardWarriorState
 {
     public override void Enter()
     {
-        GameController.i.uiController.SetForegroundCanvas(true);
-        GameController.i.uiController.SetMessagesCanvas(true);
-    }
-
-    public override void Tick()
-    {
-        // Maybe run in-game timer here?
-        // GameTimer.Tick();
-        // GameTimer would trigger all time-related actions, like passive chaos generation
+        GameSceneUIController.i.SetForegroundCanvas(true);
+        GameSceneUIController.i.SetMessagesCanvas(true);
     }
 
     public override void Exit()
     {
-        GameController.i.uiController.SetMessagesCanvas(false);
+        GameSceneUIController.i.SetMessagesCanvas(false);
     }
 }

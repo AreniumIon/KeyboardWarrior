@@ -6,8 +6,8 @@ public class StrikeState : KeyboardWarriorState
 {
     public override void Enter()
     {
-        GameController.i.uiController.SetForegroundCanvas(false);
-        GameController.i.uiController.SetStrikeCanvas(true);
+        GameSceneUIController.i.SetForegroundCanvas(false);
+        GameSceneUIController.i.SetStrikeCanvas(true);
     }
 
     public override void Tick()
@@ -17,6 +17,6 @@ public class StrikeState : KeyboardWarriorState
 
     public override void Exit()
     {
-        GameController.i.uiController.SetStrikeCanvas(false);
+        GameSceneUIController.i.SetStrikeCanvas(false);
     }
 }

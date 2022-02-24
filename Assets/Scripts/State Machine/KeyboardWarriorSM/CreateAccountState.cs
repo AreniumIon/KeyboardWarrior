@@ -4,27 +4,20 @@ using UnityEngine;
 
 public class CreateAccountState : KeyboardWarriorState
 {
-    [SerializeField] private InputUsernameController _inputUsernameController;
-
-
     public override void Enter()
     {
         ResetAccount();
-        GameController.i.uiController.SetMessagesCanvas(false);
-        GameController.i.uiController.SetShopCanvas(false);
+        GameSceneUIController.i.SetMessagesCanvas(false);
+        GameSceneUIController.i.SetShopCanvas(false);
 
-        GameController.i.uiController.SetForegroundCanvas(false);
-        GameController.i.uiController.SetCreateAccountCanvas(true);
-    }
-
-    public override void Tick()
-    {
-
+        GameSceneUIController.i.SetForegroundCanvas(false);
+        GameSceneUIController.i.SetCreateAccountCanvas(true);
     }
 
     public override void Exit()
     {
-        GameController.i.uiController.SetCreateAccountCanvas(false);
+        Debug.Log("CreateAccountState.Exit");
+        GameSceneUIController.i.SetCreateAccountCanvas(false);
     }
 
     public void ResetAccount()

@@ -2,8 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIController : MonoBehaviour
+public class GameSceneUIController : MonoBehaviour
 {
+    public static GameSceneUIController i;
+
+    private void Awake()
+    {
+        if (i == null)
+        {
+            i = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     [SerializeField] GameObject backgroundCanvas;
     [SerializeField] GameObject foregroundCanvas;
 

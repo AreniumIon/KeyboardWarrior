@@ -6,8 +6,8 @@ public class ShopState : KeyboardWarriorState
 {
     public override void Enter()
     {
-        GameController.i.uiController.SetForegroundCanvas(true);
-        GameController.i.uiController.SetShopCanvas(true);
+        GameSceneUIController.i.SetForegroundCanvas(true);
+        GameSceneUIController.i.SetShopCanvas(true);
     }
 
     public override void Tick()
@@ -19,6 +19,6 @@ public class ShopState : KeyboardWarriorState
 
     public override void Exit()
     {
-        GameController.i.uiController.SetShopCanvas(false);
+        GameSceneUIController.i.SetShopCanvas(false);
     }
 }

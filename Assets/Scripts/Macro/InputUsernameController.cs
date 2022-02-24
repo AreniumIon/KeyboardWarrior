@@ -6,15 +6,20 @@ using TMPro;
 
 public class InputUsernameController : MonoBehaviour
 {
-    //string _userName = "";
-    //string UserName => _userName;
+    [SerializeField] TextMeshProUGUI _inputFieldText;
+
+    public string username;
+
+    private void OnEnable()
+    {
+        username = "NewUser";
+        _inputFieldText.text = username;
+    }
 
     public void StoreUsername(string username)
     {
-        Debug.Log("Edited: " + username);
+        this.username = username;
         GameController.i.playerController.Username = username;
-        //_userName = username;
-        //_textDisplay.GetComponent<TextMeshProUGUI>().text = "@" + _userName;
     }
 
 }

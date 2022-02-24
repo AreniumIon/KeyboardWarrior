@@ -5,38 +5,25 @@ using System;
 
 public class SetupGameState : KeyboardWarriorState
 {
-    bool activated = false;
+    bool decided = false;
 
     public override void Enter()
     {
-        CreatePlayer();
-
-        activated = false;
+        // TODO: Decide which state to go to based on if player has progress or is playing fresh
+        // switch(playerProgress)...
+        decided = true;
     }
 
     public override void Tick()
     {
-        if (activated == false)
+        if (decided)
         {
-            activated = true;
             stateMachine.ChangeState<CreateAccountState>();
         }
     }
 
     public override void Exit()
     {
-        // Disable all tabs on startup
-        GameController.i.uiController.SetForegroundCanvas(false);
-        GameController.i.uiController.SetMessagesCanvas(false);
-        GameController.i.uiController.SetShopCanvas(false);
-        GameController.i.uiController.SetStrikeCanvas(false);
-        GameController.i.uiController.SetCreateAccountCanvas(false);
-
-        activated = false;
-    }
-
-    private void CreatePlayer()
-    {
-        // load player data from save, instantiate player with data
+        decided = false;
     }
 }

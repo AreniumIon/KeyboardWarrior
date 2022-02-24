@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7364754437170127399}
   - component: {fileID: 8321433143490598103}
   - component: {fileID: 3131779979102916319}
-  - component: {fileID: 7708199074463548791}
+  - component: {fileID: 4309432973055642052}
   m_Layer: 5
   m_Name: UsernameField
   m_TagString: Untagged
@@ -154,7 +154,18 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4309432973055642052}
+        m_MethodName: StoreUsername
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -173,7 +184,7 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
---- !u!114 &7708199074463548791
+--- !u!114 &4309432973055642052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,12 +193,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 345480350866914631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 042be1691014cc94d85738da7b2976b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 67d1164b99e2cdd43a83ab1f6fd7df42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _userName: 
-  _inputField: {fileID: 0}
-  _textDisplay: {fileID: 0}
+  _inputFieldText: {fileID: 374432547858664962}
 --- !u!1 &1404186935778759912
 GameObject:
   m_ObjectHideFlags: 0
