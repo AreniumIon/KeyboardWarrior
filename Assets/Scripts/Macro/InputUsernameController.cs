@@ -12,7 +12,7 @@ public class InputUsernameController : MonoBehaviour
 
     private void OnEnable()
     {
-        username = "NewUser";
+        username = UsernameGenerator.GetUsername();
         _inputField.text = username;
     }
 
