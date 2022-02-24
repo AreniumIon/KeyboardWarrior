@@ -18,6 +18,11 @@ public class SetupGameState : KeyboardWarriorState
     {
         if (decided)
         {
+            GameSceneUIController.i.SetForegroundCanvas(false);
+            GameSceneUIController.i.SetMessagesCanvas(false);
+            GameSceneUIController.i.SetShopCanvas(false);
+            GameSceneUIController.i.SetCreateAccountCanvas(false);
+
             stateMachine.ChangeState<CreateAccountState>();
         }
     }

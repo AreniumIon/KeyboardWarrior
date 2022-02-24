@@ -6,11 +6,11 @@ public class CreateAccountState : KeyboardWarriorState
 {
     public override void Enter()
     {
-        ResetAccount();
+        ResetAccount();/*
         GameSceneUIController.i.SetMessagesCanvas(false);
         GameSceneUIController.i.SetShopCanvas(false);
 
-        GameSceneUIController.i.SetForegroundCanvas(false);
+        GameSceneUIController.i.SetForegroundCanvas(false);*/
         GameSceneUIController.i.SetCreateAccountCanvas(true);
     }
 
