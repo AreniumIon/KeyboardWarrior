@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CreateAccountState : KeyboardWarriorState
 {
-    [SerializeField] private InputUsernameController _inputUsernameController;
-
-
     public override void Enter()
     {
         ResetAccount();
