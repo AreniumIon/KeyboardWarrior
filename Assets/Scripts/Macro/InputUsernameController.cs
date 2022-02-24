@@ -6,14 +6,14 @@ using TMPro;
 
 public class InputUsernameController : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _inputFieldText;
+    [SerializeField] TMP_InputField _inputField;
 
     public string username;
 
     private void OnEnable()
     {
         username = "NewUser";
-        _inputFieldText.text = username;
+        _inputField.text = username;
     }
 
     public void StoreUsername(string username)

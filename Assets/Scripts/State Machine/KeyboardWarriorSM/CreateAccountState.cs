@@ -16,7 +16,6 @@ public class CreateAccountState : KeyboardWarriorState
 
     public override void Exit()
     {
-        Debug.Log("CreateAccountState.Exit");
         GameSceneUIController.i.SetCreateAccountCanvas(false);
     }
 
