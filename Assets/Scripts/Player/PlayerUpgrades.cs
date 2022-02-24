@@ -11,6 +11,11 @@ public class PlayerUpgrades : MonoBehaviour
         { UpgradeType.Comment_Bot, new CommentBot() },
         { UpgradeType.Fake_Sources, new FakeSources() },
         { UpgradeType.Harsh_Vocabulary, new HarshVocabulary() },
+        { UpgradeType.More_Influence, new MoreInfluence() },
+        { UpgradeType.Sarcasm_Risk, new SarcasmRisk() },
+        { UpgradeType.Troll_Risk, new TrollRisk() },
+        { UpgradeType.Sarcasm_Boost, new SarcasmBoost() },
+        { UpgradeType.Troll_Boost, new TrollBoost() },
     };
 
     /* Reflection pattern that would eliminate the need for "UpgradeType" enum.

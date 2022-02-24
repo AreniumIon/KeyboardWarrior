@@ -46,13 +46,42 @@ public class PlayerResources : MonoBehaviour
 
     // comment risk modifiers
 
+    //TODO: add bool to make sure risk doesn't go below zero!
+
     float trollRisk = 10f;
     public float TrollRisk { get => trollRisk; set { trollRisk = value; changeTrollRiskEvent?.Invoke(trollRisk); } }
     public event Action<float> changeTrollRiskEvent;
 
+    public bool LowerTrollRisk(float amount)
+    {
+        if (trollRisk <= 0)
+            return false;
+
+        if (trollRisk - amount <= 0)
+            TrollRisk = 0;
+        else
+            TrollRisk -= amount;
+        
+        return true;
+    }
+
     float sarcasmRisk = 2f;
     public float SarcasmRisk { get => sarcasmRisk; set { sarcasmRisk = value; changeSarcasmRiskEvent?.Invoke(sarcasmRisk); } }
     public event Action<float> changeSarcasmRiskEvent;
+
+    public bool LowerSarcasmRisk(float amount)
+    {
+        if (sarcasmRisk <= 0)
+            return false;
+
+        if (sarcasmRisk - amount <= 0)
+            SarcasmRisk = 0;
+        else
+            SarcasmRisk -= amount;
+
+        return true;
+    }
+
 
     // followers
 
@@ -60,6 +89,7 @@ public class PlayerResources : MonoBehaviour
     public int Followers { get => followers; set { followers = value; changeFollowersEvent?.Invoke(followers); } }
     public event Action<int> changeFollowersEvent;
 
+    //TODO: add bool to make sure time doesn't go below zero!
     float followerCPTime = 2f;
     public float FollowerCPTime { get => followerCPTime; set { followerCPTime = value; changeFollowerCPTimeEvent?.Invoke(followerCPTime); } }
     public event Action<float> changeFollowerCPTimeEvent;

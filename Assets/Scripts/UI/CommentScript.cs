@@ -12,18 +12,27 @@ public class CommentScript : MonoBehaviour
     float commentMod = 1f;
     float risk = 0f;
     float totalRisk = 0f;
-    float riskPercent = 10f;
+    float riskPercent = 20f;
     float riskReduction = 2f;
     int gainThisTurn = 0;
+
+    float sarcasmFollowerGain = 0.01f;
+    float trollFollowerGain = 0.05f;
 
     //profile controller reference
     [SerializeField] ProfileDisplay _profileRoot;
 
+    PlayerController playerController;
+    PlayerResources playerResources;
+
     private void Start()
     {
-        PlayerController playerController = GameController.i.playerController;
+        playerController = GameController.i.playerController;
+        playerResources = playerController.playerResources;
 
-        playerController.playerResources.changeReputationEvent += UpdateButton;
+        playerResources.changeReputationEvent += UpdateButton;
+        playerResources.changeTrollRiskEvent += UpdateButton;
+        playerResources.changeSarcasmRiskEvent += UpdateButton; 
         UpdateButton(playerController.playerResources.CPPerClick);
     }
 
@@ -39,14 +48,14 @@ public class CommentScript : MonoBehaviour
                     break;
 
                 case 1:// ButtonType 2 == Sarcasm
-                    risk = GameController.i.playerController.playerResources.SarcasmRisk;
+                    risk = playerResources.SarcasmRisk; //GameController.i.playerController.playerResources.SarcasmRisk
                     break;
 
                 case 2: // ButtonType 2 == Trolling 
-                    risk = GameController.i.playerController.playerResources.TrollRisk;
+                    risk = playerResources.TrollRisk;
                     break;
             }
-            totalRisk = risk + GameController.i.playerController.playerResources.Reputation; //repChange
+            totalRisk = risk + playerResources.Reputation; //repChange
 
             _riskText.text = string.Format("Risk: {0:#.00} % ", totalRisk);
         }
@@ -72,23 +81,23 @@ public class CommentScript : MonoBehaviour
 
             case 1:// ButtonType 2 == Sarcasm
                 //Debug.Log("Deploying Sarcasm...");
-                commentMod = GameController.i.playerController.playerResources.SarcasmMod;
-                risk = GameController.i.playerController.playerResources.SarcasmRisk;
+                commentMod = playerResources.SarcasmMod;
+                risk = playerResources.SarcasmRisk;
                 break;
 
             case 2: // ButtonType 2 == Trolling 
                 //Debug.Log("Trolling...");
-                commentMod = GameController.i.playerController.playerResources.TrollMod;
-                risk = GameController.i.playerController.playerResources.TrollRisk;
+                commentMod = playerResources.TrollMod;
+                risk = playerResources.TrollRisk;
                 break;
         }
 
         //multiply cp gained by type modifier
-        gainThisTurn = (int)Mathf.Round(commentMod * GameController.i.playerController.playerResources.CPPerClick);
+        gainThisTurn = (int)Mathf.Round(commentMod * playerResources.CPPerClick);
         //Debug.Log("Gain this turn: " + gainThisTurn);
 
         //add points to player's total
-        GameController.i.playerController.playerResources.CP += gainThisTurn;
+        playerResources.CP += gainThisTurn;
 
         //add followers to player
         AddFollowers();
@@ -97,30 +106,31 @@ public class CommentScript : MonoBehaviour
         Risk();
     }
 
+    
     void AddFollowers()
     {
         //Debug.Log("Cause you gotta have friends!~");
-        int totalCP = GameController.i.playerController.playerResources.CP;
+        int totalCP = playerResources.CP;
         int followerGain = 0;
 
         if(buttonType == 1)
         {
             //sarcastic follower gain: 5% of current CP
-            followerGain += (int)Mathf.Round(totalCP * .05f);
+            followerGain += (int)Mathf.Round(totalCP * sarcasmFollowerGain);
         }
         else if(buttonType == 2)
         {
             //troll follower gain: 10% of current CP
-            followerGain += (int)Mathf.Round(totalCP * .1f);
+            followerGain += (int)Mathf.Round(totalCP * trollFollowerGain);
         }
 
-        Debug.Log("Followers gained: " + followerGain);
-        GameController.i.playerController.playerResources.Followers += followerGain;
+        //Debug.Log("Followers gained: " + followerGain);
+        playerResources.Followers += followerGain;
     }
 
     void Risk()
     {
-        if (risk > 0)
+        if (buttonType != 0)
         {
             //determine if player is striked for comment
             float diceRoll = UnityEngine.Random.Range(0f, 100f);
@@ -131,15 +141,17 @@ public class CommentScript : MonoBehaviour
                 //divide reputation by 2
                 GameController.i.playerController.playerResources.Reputation /= riskReduction;
                 // dice rolled lower; punish the player with a strike
-                GameController.i.playerController.playerResources.Strikes += 1;
+                playerResources.Strikes += 1;
                 GameController.i.keyboardWarriorSM.ChangeState<StrikeState>();
             }
             else
             {
                 // dice rolled higher; player is safe but might raise reputation
                 // add 1/riskPercent of comment's risk to the reputation
-                GameController.i.playerController.playerResources.Reputation += (risk / riskPercent);
-                Debug.Log("Reputation == " + GameController.i.playerController.playerResources.Reputation);
+                //roll random risk to add to reputation
+                float riskAdd = UnityEngine.Random.Range(1f, riskPercent);
+                playerResources.Reputation += (1 / riskAdd);
+                Debug.Log("Reputation == " + playerResources.Reputation);
             }
         }
     }

@@ -967,51 +967,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2502560618936944317, guid: e5ab6605f046d5f4c849eb53e3e28238,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502560618936944317, guid: e5ab6605f046d5f4c849eb53e3e28238,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502560618936944317, guid: e5ab6605f046d5f4c849eb53e3e28238,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502560618936944317, guid: e5ab6605f046d5f4c849eb53e3e28238,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502560618936944317, guid: e5ab6605f046d5f4c849eb53e3e28238,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502560620048543173, guid: e5ab6605f046d5f4c849eb53e3e28238,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502560620048543173, guid: e5ab6605f046d5f4c849eb53e3e28238,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502560620048543173, guid: e5ab6605f046d5f4c849eb53e3e28238,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2502560620048543173, guid: e5ab6605f046d5f4c849eb53e3e28238,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2502560620191752328, guid: e5ab6605f046d5f4c849eb53e3e28238,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1122,11 +1077,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Strike Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2502560620191752332, guid: e5ab6605f046d5f4c849eb53e3e28238,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ab6605f046d5f4c849eb53e3e28238, type: 3}
 --- !u!1001 &3345661150225585124
@@ -1140,6 +1090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Messages Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345661151872314859, guid: ef3699285334dd84f81ca40ef8ec0559,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3345661151872314871, guid: ef3699285334dd84f81ca40ef8ec0559,
         type: 3}

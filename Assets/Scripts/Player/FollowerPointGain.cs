@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class FollowerPointGain : MonoBehaviour
 {
-    int gainThisTurn = 0;
     bool inRoutine = false;
-    // Start is called before the first frame update
+    int gainThisTurn = 0;
+    float waitTime = 0f;
+
+    PlayerResources playerResources;
+
     void Start()
     {
+        playerResources = GameController.i.playerController.playerResources;
+    }
+
+    void OnEnable()
+    {
         //Debug.Log("Follower Point Gain Time!");
-        //Time.timeScale = 1;
-        
+
+        //start coroutine again if the canvas is reawakened
+        inRoutine = false;
+        StartCoroutine(FollowerCPCoroutine());
     }
 
     void FixedUpdate()
@@ -28,18 +38,16 @@ public class FollowerPointGain : MonoBehaviour
         //Time.timeScale = 1;
         inRoutine = true;
         //wait followerCPTime seconds
-        //Debug.Log("Waiting...");
-        yield return null;//new WaitForSecondsRealtime(1f);
-        Debug.Log("Done Waiting");
+        waitTime = 2; // playerResources.FollowerCPTime;            //this causes an error because of a race condition with player resources!
+        yield return new WaitForSecondsRealtime(waitTime);
 
         //add followers X FollowerCPGain CP to total
         gainThisTurn = (int)Mathf.Round(
-                GameController.i.playerController.playerResources.Followers
-                * GameController.i.playerController.playerResources.FollowerCPGain
+                playerResources.Followers * playerResources.FollowerCPGain 
             );
 
-        Debug.Log("Followers gained " + gainThisTurn + " CP!");
-        GameController.i.playerController.playerResources.CP += gainThisTurn;
+        //Debug.Log("Followers gained " + gainThisTurn + " CP!");
+        playerResources.CP += gainThisTurn;
 
         inRoutine = false;
     }
