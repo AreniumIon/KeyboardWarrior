@@ -407,6 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a82bf86cd25f4448eb16cb8892aa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputUsernameController: {fileID: 0}
 --- !u!114 &1397818959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,6 +834,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Create Account Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404186936192630904, guid: 8fa5056f826b4c749956aee405674158,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fa5056f826b4c749956aee405674158, type: 3}
