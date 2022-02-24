@@ -6,7 +6,8 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     // This could be display on the user's troll twitter account or something.
-    public string username = "DefaultUsername";
+    string username = "DefaultUsername";
+    public string Username { get => username; set => username = value; }
 
     public PlayerResources playerResources;
 

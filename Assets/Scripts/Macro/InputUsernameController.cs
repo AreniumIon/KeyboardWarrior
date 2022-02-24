@@ -6,22 +6,15 @@ using TMPro;
 
 public class InputUsernameController : MonoBehaviour
 {
-    [SerializeField] public string _userName = "";
-    [SerializeField] TMP_InputField _inputField;
-    [SerializeField] GameObject _textDisplay = null;
+    //string _userName = "";
+    //string UserName => _userName;
 
-    public void StoreUsername()
+    public void StoreUsername(string username)
     {
-        if(string.IsNullOrEmpty(_inputField.text))
-        {
-            _userName = "User";
-            _textDisplay.GetComponent<TextMeshProUGUI>().text = "@" + _userName;
-        }
-        else
-        {
-            _userName = _inputField.text;
-            _textDisplay.GetComponent<TextMeshProUGUI>().text = "@" + _userName;
-        }
+        Debug.Log("Edited: " + username);
+        GameController.i.playerController.Username = username;
+        //_userName = username;
+        //_textDisplay.GetComponent<TextMeshProUGUI>().text = "@" + _userName;
     }
 
 }
