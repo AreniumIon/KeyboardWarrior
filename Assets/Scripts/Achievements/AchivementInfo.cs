@@ -10,6 +10,12 @@ public abstract class AchievementInfo
 
     public bool unlocked = true;
 
-    // Optional. We can make achievements give the player a permanent bonus on unlocking.
-    public virtual void OnUnlock() { }
+    // Subscribe to events for unlocking. Called in PlayerAchievements.
+    public virtual void OnStart() { }
+
+    public virtual void OnUnlock()
+    {
+        // TODO: Notifications
+        // Notifications.NotifyAchievement(this);
+    }
 }

@@ -11,4 +11,12 @@ public class PlayerAchievements : MonoBehaviour
         { AchievementType.Sample_Achievement, new SampleAchievement() },
         { AchievementType.Other_Sample_Achievement, new OtherSampleAchievement() },
     };
+
+    private void Start()
+    {
+        foreach (AchievementInfo ai in achievementInfos.Values)
+        {
+            ai.OnStart();
+        }
+    }
 }
