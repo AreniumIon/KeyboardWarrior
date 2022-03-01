@@ -12,12 +12,6 @@ public static class SaveController
         PlayerResources pr = pc.playerResources;
 
         // Resources
-
-        // Manually setting every variable is annoying so I'm using reflection instead
-        // PlayerPrefs.SetInt("CP", pc.playerResources.CP);
-        // PlayerPrefs.SetInt("Strikes", pc.playerResources.Strikes);
-        // PlayerPrefs.SetFloat("Reputation", pc.playerResources.Reputation);
-
         foreach (FieldInfo fieldInfo in pr.GetType().GetFields())
         {
             var value = fieldInfo.GetValue(pr);
@@ -45,6 +39,40 @@ public static class SaveController
 
     public static void Load()
     {
+        PlayerController pc = GameController.i.playerController;
+        PlayerResources pr = pc.playerResources;
 
+        // Resources
+        foreach (FieldInfo fieldInfo in pr.GetType().GetFields())
+        {
+            var value = 0f;
+            switch (fieldInfo.GetValue(pr))
+            {
+                case int i: value = PlayerPrefs.GetInt(fieldInfo.Name, i); break;
+                case float f: value = PlayerPrefs.GetFloat(fieldInfo.Name, f); break;
+                default:
+                    throw new Exception("SaveController.Load attempted to load variable of invalid type from PlayerResources: "
+               + fieldInfo.Name + " (typeof " + value.GetType().ToString() + ")");
+            }
+            fieldInfo.SetValue(pr, value);
+        }
+
+        // Upgrades
+        foreach (UpgradeInfo ui in pc.playerUpgrades.upgradeInfos.Values)
+        {
+            ui.upgrades = PlayerPrefs.GetInt(ui.Type.ToString());
+        }
+
+        // Achievements
+        foreach (AchievementInfo ai in pc.playerAchievements.achievementInfos.Values)
+        {
+            ai.unlocked = PlayerPrefs.GetInt(ai.Type.ToString()) == 1;
+        }
+    }
+
+    public static void ResetSave()
+    {
+        // WARNING: This would also delete settings, which might not be what we want
+        PlayerPrefs.DeleteAll();
     }
 }
