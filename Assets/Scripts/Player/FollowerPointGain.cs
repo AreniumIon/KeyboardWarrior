@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class FollowerPointGain : MonoBehaviour
 {
     bool inRoutine = false;
     int gainThisTurn = 0;
-    float waitTime = 0f;
+    float waitTime = 100f;
 
     PlayerResources playerResources;
 
@@ -38,12 +39,26 @@ public class FollowerPointGain : MonoBehaviour
         //Time.timeScale = 1;
         inRoutine = true;
         //wait followerCPTime seconds
-        waitTime = 2; // playerResources.FollowerCPTime;            //this causes an error because of a race condition with player resources!
+
+        try
+        {
+            waitTime = playerResources.FollowerCPTime;            //this causes an error because of a race condition with player resources!
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log("Null reference Exeption in Follower Count Gain Time! :: " + e);
+        }
+
         yield return new WaitForSecondsRealtime(waitTime);
 
         //add followers X FollowerCPGain CP to total
+        /*
         gainThisTurn = (int)Mathf.Round(
                 playerResources.Followers * playerResources.FollowerCPGain 
+            );
+        */
+        gainThisTurn = (int)Mathf.Round(
+                playerResources.Followers * playerResources.FollowerCPGain
             );
 
         //Debug.Log("Followers gained " + gainThisTurn + " CP!");

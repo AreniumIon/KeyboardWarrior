@@ -12,8 +12,9 @@ public class CommentScript : MonoBehaviour
     float commentMod = 1f;
     float risk = 0f;
     float totalRisk = 0f;
-    float riskPercent = 20f;
+    float riskPercent = 40f; //higher number == lower percent add
     float riskReduction = 2f;
+    float riskAddPerButtonPress = 0.5f;
     int gainThisTurn = 0;
 
     float sarcasmFollowerGain = 0.01f;
@@ -152,6 +153,12 @@ public class CommentScript : MonoBehaviour
                 float riskAdd = UnityEngine.Random.Range(1f, riskPercent);
                 playerResources.Reputation += (1 / riskAdd);
                 Debug.Log("Reputation == " + playerResources.Reputation);
+
+                //increase button risk by an amount
+                if (buttonType == 1)
+                    playerResources.SarcasmRisk += riskAddPerButtonPress;
+                else
+                    playerResources.TrollRisk += riskAddPerButtonPress;
             }
         }
     }

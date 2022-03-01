@@ -46,9 +46,8 @@ public class PlayerResources : MonoBehaviour
 
     // comment risk modifiers
 
-    //TODO: add bool to make sure risk doesn't go below zero!
-
-    float trollRisk = 10f;
+    public static float TrollRiskDefault = 10f;
+    float trollRisk = TrollRiskDefault;
     public float TrollRisk { get => trollRisk; set { trollRisk = value; changeTrollRiskEvent?.Invoke(trollRisk); } }
     public event Action<float> changeTrollRiskEvent;
 
@@ -65,7 +64,8 @@ public class PlayerResources : MonoBehaviour
         return true;
     }
 
-    float sarcasmRisk = 2f;
+    public static float SarcasmRiskDefault = 2f;
+    float sarcasmRisk = SarcasmRiskDefault;
     public float SarcasmRisk { get => sarcasmRisk; set { sarcasmRisk = value; changeSarcasmRiskEvent?.Invoke(sarcasmRisk); } }
     public event Action<float> changeSarcasmRiskEvent;
 
@@ -89,14 +89,17 @@ public class PlayerResources : MonoBehaviour
     public int Followers { get => followers; set { followers = value; changeFollowersEvent?.Invoke(followers); } }
     public event Action<int> changeFollowersEvent;
 
-    //TODO: add bool to make sure time doesn't go below zero!
     float followerCPTime = 2f;
     public float FollowerCPTime { get => followerCPTime; set { followerCPTime = value; changeFollowerCPTimeEvent?.Invoke(followerCPTime); } }
     public event Action<float> changeFollowerCPTimeEvent;
 
-    int followerCPGain = 1;
-    public int FollowerCPGain { get => followerCPGain; set { followerCPGain = value; changeFollowerCPGainEvent?.Invoke(followerCPGain); } }
-    public event Action<int> changeFollowerCPGainEvent;
+    float followerCPGain = 0.30f;
+    public float FollowerCPGain { get => followerCPGain; set { followerCPGain = value; changeFollowerCPGainEvent?.Invoke(followerCPGain); } }
+    public event Action<float> changeFollowerCPGainEvent;
+
+    float followerKeepPercent = 0f;
+    public float FollowerKeepPercent { get => followerKeepPercent; set { followerKeepPercent = value; changeFollowerKeepPercentEvent?.Invoke(followerKeepPercent); } }
+    public event Action<float> changeFollowerKeepPercentEvent;
 
     // TODO: Followers, experts, flags
 

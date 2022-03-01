@@ -8,14 +8,17 @@ public class PlayerUpgrades : MonoBehaviour
 {
     public Dictionary<UpgradeType, UpgradeInfo> upgradeInfos = new Dictionary<UpgradeType, UpgradeInfo>()
     {
-        { UpgradeType.Comment_Bot, new CommentBot() },
-        { UpgradeType.Fake_Sources, new FakeSources() },
-        { UpgradeType.Harsh_Vocabulary, new HarshVocabulary() },
-        { UpgradeType.More_Influence, new MoreInfluence() },
-        { UpgradeType.Sarcasm_Risk, new SarcasmRisk() },
-        { UpgradeType.Troll_Risk, new TrollRisk() },
-        { UpgradeType.Sarcasm_Boost, new SarcasmBoost() },
-        { UpgradeType.Troll_Boost, new TrollBoost() },
+        { UpgradeType.Comment_Bot,              new CommentBot() },
+        { UpgradeType.Fake_Sources,             new FakeSources() },
+        { UpgradeType.Harsh_Vocabulary,         new HarshVocabulary() },
+        { UpgradeType.More_Influence,           new Upgrades.MoreInfluence() },
+        { UpgradeType.Sarcasm_Risk,             new Upgrades.SarcasmRisk() },
+        { UpgradeType.Troll_Risk,               new Upgrades.TrollRisk() },
+        { UpgradeType.Sarcasm_Boost,            new Upgrades.SarcasmBoost() },
+        { UpgradeType.Troll_Boost,              new Upgrades.TrollBoost() },
+        { UpgradeType.Faster_Followers,         new Upgrades.FasterFollowers() },
+        { UpgradeType.More_Per_Follower,        new Upgrades.MoreInfluencePerFollower() },
+        { UpgradeType.Followers_Over_Reset,     new Upgrades.FollowerOverReset() },
     };
 
     /* Reflection pattern that would eliminate the need for "UpgradeType" enum.

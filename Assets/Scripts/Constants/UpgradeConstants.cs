@@ -14,5 +14,8 @@ public static class UpgradeConstants
         Troll_Risk, //reduce troll risk by 2%
         Sarcasm_Boost, //increase mod from sarcasm by 0.8
         Troll_Boost, //increase mod from trolling by 1
+        Faster_Followers, //decrease time between follower CP gain by 0.3
+        More_Per_Follower, //increase cp per follower by 0.25
+        Followers_Over_Reset,
     }
 }
