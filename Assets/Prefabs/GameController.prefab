@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8321422418621460381}
   - component: {fileID: 8321422418621460383}
   - component: {fileID: 8321422418621460382}
+  - component: {fileID: 7752156591834053733}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerResources: {fileID: 8321422418621460383}
   playerUpgrades: {fileID: 8321422418621460382}
+  playerAchievements: {fileID: 7752156591834053733}
 --- !u!114 &8321422418621460383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +71,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f6a0c639fe329e4382abd02f1e383c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7752156591834053733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321422418621460379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f12e529bc881947b1eba6b6abfc258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8321422418965286047

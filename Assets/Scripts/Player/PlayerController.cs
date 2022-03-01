@@ -13,5 +13,5 @@ public class PlayerController : MonoBehaviour
 
     public PlayerUpgrades playerUpgrades;
 
-    // TODO: PlayerAchievements
+    public PlayerAchievements playerAchievements;
 }
