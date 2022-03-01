@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AchievementConstants;
 
 public abstract class AchievementInfo
 {
-    //public abstract UpgradeType Type { get; }
+    public abstract AchievementType Type { get; }
     public abstract string Name { get; }
     public abstract string Description { get; }
 

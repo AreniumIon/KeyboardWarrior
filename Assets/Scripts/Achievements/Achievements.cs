@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AchievementConstants;
 
 namespace Achievements
 {
     public class SampleAchievement : AchievementInfo
     {
+        public override AchievementType Type => AchievementType.Sample_Achievement;
         public override string Name => "Sample Achievement";
         public override string Description => "Have 100 chaos points.";
 
@@ -30,6 +32,7 @@ namespace Achievements
 
     public class OtherSampleAchievement : AchievementInfo
     {
+        public override AchievementType Type => AchievementType.Other_Sample_Achievement;
         public override string Name => "Other Sample Achievement";
         public override string Description => "Have 500 chaos points.";
 

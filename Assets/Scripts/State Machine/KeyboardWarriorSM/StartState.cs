@@ -30,6 +30,8 @@ public class StartState : KeyboardWarriorState
     {
         // GameController.i.playerController = ...
         // load player data from save, instantiate player with data
+
+        SaveController.Save();
     }
 
     IEnumerator EnterGameScene()
