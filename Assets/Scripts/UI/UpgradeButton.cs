@@ -10,7 +10,7 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameText = null;
     [SerializeField] TextMeshProUGUI descriptionText = null;
     [SerializeField] TextMeshProUGUI costText = null;
-    [SerializeField] UpgradeType upgradeType;
+    [SerializeField] public UpgradeType upgradeType;
 
     public void Start()
     {
@@ -22,7 +22,7 @@ public class UpgradeButton : MonoBehaviour
         UpdateCostText(upgradeInfo);
     }
 
-    public void Click()
+    public virtual void Click()
     {
         PlayerController playerController = GameController.i.playerController;
         PlayerResources playerResources = playerController.playerResources;
@@ -41,16 +41,19 @@ public class UpgradeButton : MonoBehaviour
 
     private void UpdateNameText(UpgradeInfo upgradeInfo)
     {
-        nameText.text = upgradeInfo.Name;
+        if(nameText != null)
+            nameText.text = upgradeInfo.Name;
     }
 
     private void UpdateDescriptionText(UpgradeInfo upgradeInfo)
     {
-        descriptionText.text = upgradeInfo.Description;
+        if (descriptionText != null)
+            descriptionText.text = upgradeInfo.Description;
     }
 
-    private void UpdateCostText(UpgradeInfo upgradeInfo)
+    protected void UpdateCostText(UpgradeInfo upgradeInfo)
     {
-        costText.text = upgradeInfo.GetCost() + " CP";
+        if (costText != null)
+            costText.text = upgradeInfo.GetCost() + " CP";
     }
 }
