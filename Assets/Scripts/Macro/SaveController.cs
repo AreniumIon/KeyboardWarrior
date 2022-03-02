@@ -12,15 +12,15 @@ public static class SaveController
         PlayerResources pr = pc.playerResources;
 
         // Resources
-        foreach (FieldInfo fieldInfo in pr.GetType().GetFields())
+        foreach (PropertyInfo propertyInfo in pr.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
         {
-            var value = fieldInfo.GetValue(pr);
+            var value = propertyInfo.GetValue(pr);
             switch (value)
             {
-                case int i: PlayerPrefs.SetInt(fieldInfo.Name, i); break;
-                case float f: PlayerPrefs.SetFloat(fieldInfo.Name, f); break;
+                case int i: PlayerPrefs.SetInt(propertyInfo.Name, i); break;
+                case float f: PlayerPrefs.SetFloat(propertyInfo.Name, f); break;
                 default: throw new Exception("SaveController.Save attempted to save variable of invalid type from PlayerResources: "
-                    + fieldInfo.Name + " (typeof " + value.GetType().ToString() + ")");
+                    + propertyInfo.Name + " (typeof " + value.GetType().ToString() + ")");
             }
         }
 
@@ -43,19 +43,20 @@ public static class SaveController
         PlayerResources pr = pc.playerResources;
 
         // Resources
-        foreach (FieldInfo fieldInfo in pr.GetType().GetFields())
+        foreach (PropertyInfo propertyInfo in pr.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
         {
             var value = 0f;
-            switch (fieldInfo.GetValue(pr))
+            Debug.Log("Set Value: " + propertyInfo.Name);
+            switch (propertyInfo.GetValue(pr))
             {
-                case int i: value = PlayerPrefs.GetInt(fieldInfo.Name, i); break;
-                case float f: value = PlayerPrefs.GetFloat(fieldInfo.Name, f); break;
+                case int i: value = PlayerPrefs.GetInt(propertyInfo.Name, i); propertyInfo.SetValue(pr, (int)value); break;
+                case float f: value = PlayerPrefs.GetFloat(propertyInfo.Name, f); propertyInfo.SetValue(pr,(float)value); break;
                 default:
-                    throw new Exception("SaveController.Load attempted to load variable of invalid type from PlayerResources: "
-               + fieldInfo.Name + " (typeof " + value.GetType().ToString() + ")");
+                    //Debug.LogError("SaveController.Load attempted to load variable of invalid type from PlayerResources: " + propertyInfo.Name + " (typeof " + value.GetType().ToString() + ")");
+                    throw new Exception("SaveController.Load attempted to load variable of invalid type from PlayerResources: " + propertyInfo.Name + " (typeof " + value.GetType().ToString() + ")");
             }
-            fieldInfo.SetValue(pr, value);
-            Debug.Log("Set Value: " + fieldInfo.Name + ", " + value);
+            //Debug.Log("Set Value: " + propertyInfo.Name + ", " + value);
+            //propertyInfo.SetValue(pr, value);
         }
 
         // Upgrades
