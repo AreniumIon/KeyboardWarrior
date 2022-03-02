@@ -55,6 +55,7 @@ public static class SaveController
                + fieldInfo.Name + " (typeof " + value.GetType().ToString() + ")");
             }
             fieldInfo.SetValue(pr, value);
+            Debug.Log("Set Value: " + fieldInfo.Name + ", " + value);
         }
 
         // Upgrades
@@ -72,7 +73,7 @@ public static class SaveController
 
     public static void ResetSave()
     {
-        // WARNING: This would also delete settings, which might not be what we want
+        // WARNING: This would also delete settings if settings use PlayerPrefs, which might not be what we want
         PlayerPrefs.DeleteAll();
     }
 }
