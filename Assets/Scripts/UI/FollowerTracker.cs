@@ -9,7 +9,10 @@ public class FollowerTracker : MonoBehaviour
 
     private void Start()
     {
-        GameController.i.playerController.playerResources.changeFollowersEvent += SetText;
+        PlayerResources pr = GameController.i.playerController.playerResources;
+
+        pr.changeFollowersEvent += SetText;
+        SetText(pr.Followers);
     }
 
     private void SetText(int followerNum)

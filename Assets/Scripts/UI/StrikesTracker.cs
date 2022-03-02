@@ -9,7 +9,10 @@ public class StrikesTracker : MonoBehaviour
 
     private void Start()
     {
-        GameController.i.playerController.playerResources.changeStrikesEvent += SetText;
+        PlayerResources pr = GameController.i.playerController.playerResources;
+
+        pr.changeStrikesEvent += SetText;
+        SetText(pr.Strikes);
     }
 
     private void SetText(int strikePoints)

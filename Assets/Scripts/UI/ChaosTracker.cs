@@ -9,7 +9,10 @@ public class ChaosTracker : MonoBehaviour
 
     private void Start()
     {
-        GameController.i.playerController.playerResources.changeCPEvent += SetText;
+        PlayerResources pr = GameController.i.playerController.playerResources;
+
+        pr.changeCPEvent += SetText;
+        SetText(pr.CP);
     }
 
     private void SetText(int chaosPoints)
