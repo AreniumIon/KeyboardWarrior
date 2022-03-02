@@ -5,12 +5,13 @@ using System;
 
 public class SetupGameState : KeyboardWarriorState
 {
+    bool hasSaveData;
     bool decided = false;
 
     public override void Enter()
     {
-        // TODO: Decide which state to go to based on if player has progress or is playing fresh
-        // switch(playerProgress)...
+        hasSaveData = PlayerPrefs.GetInt("HasSaveData") == 1;
+
         decided = true;
     }
 
@@ -23,7 +24,10 @@ public class SetupGameState : KeyboardWarriorState
             GameSceneUIController.i.SetShopCanvas(false);
             GameSceneUIController.i.SetCreateAccountCanvas(false);
 
-            stateMachine.ChangeState<CreateAccountState>();
+            if (hasSaveData)
+                stateMachine.ChangeState<MessagesState>();
+            else
+                stateMachine.ChangeState<CreateAccountState>();
         }
     }
 

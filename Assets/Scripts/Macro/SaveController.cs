@@ -35,6 +35,9 @@ public static class SaveController
         {
             PlayerPrefs.SetInt(ai.Type.ToString(), ai.unlocked ? 1 : 0);
         }
+
+        // Save marker
+        PlayerPrefs.SetInt("HasSaveData", 1);
     }
 
     public static void Load()
