@@ -28,10 +28,9 @@ public class StartState : KeyboardWarriorState
 
     private void CreatePlayer()
     {
-        // GameController.i.playerController = ...
-        // load player data from save, instantiate player with data
-
         SaveController.Load();
+
+        GameController.i.playerController.SetParams();
     }
 
     IEnumerator EnterGameScene()

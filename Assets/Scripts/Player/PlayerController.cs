@@ -14,4 +14,10 @@ public class PlayerController : MonoBehaviour
     public PlayerUpgrades playerUpgrades;
 
     public PlayerAchievements playerAchievements;
+
+    // Called in StartState after loading save data
+    public void SetParams()
+    {
+        playerAchievements.SubscribeAchievements();
+    }
 }

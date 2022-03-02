@@ -12,11 +12,13 @@ public abstract class AchievementInfo
     public bool unlocked = true;
 
     // Subscribe to events for unlocking. Called in PlayerAchievements.
-    public virtual void OnStart() { }
+    public virtual void SubscribeCheck() { }
 
     public virtual void OnUnlock()
     {
         // TODO: Notifications
         // Notifications.NotifyAchievement(this);
+
+        Debug.Log("Achievement Unlocked: " + Name);
     }
 }

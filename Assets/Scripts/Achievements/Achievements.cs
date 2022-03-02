@@ -11,7 +11,7 @@ namespace Achievements
         public override string Name => "Sample Achievement";
         public override string Description => "Have 100 chaos points.";
 
-        public override void OnStart()
+        public override void SubscribeCheck()
         {
             GameController.i.playerController.playerResources.changeCPEvent += CheckUnlock;
         }
@@ -36,7 +36,7 @@ namespace Achievements
         public override string Name => "Other Sample Achievement";
         public override string Description => "Have 500 chaos points.";
 
-        public override void OnStart()
+        public override void SubscribeCheck()
         {
             GameController.i.playerController.playerResources.changeCPEvent += CheckUnlock;
         }

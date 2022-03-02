@@ -49,7 +49,7 @@ public static class SaveController
         foreach (PropertyInfo propertyInfo in pr.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
         {
             var value = 0f;
-            Debug.Log("Set Value: " + propertyInfo.Name);
+            //Debug.Log("Set Value: " + propertyInfo.Name);
             switch (propertyInfo.GetValue(pr))
             {
                 case int i: value = PlayerPrefs.GetInt(propertyInfo.Name, i); propertyInfo.SetValue(pr, (int)value); break;
@@ -58,8 +58,6 @@ public static class SaveController
                     //Debug.LogError("SaveController.Load attempted to load variable of invalid type from PlayerResources: " + propertyInfo.Name + " (typeof " + value.GetType().ToString() + ")");
                     throw new Exception("SaveController.Load attempted to load variable of invalid type from PlayerResources: " + propertyInfo.Name + " (typeof " + value.GetType().ToString() + ")");
             }
-            //Debug.Log("Set Value: " + propertyInfo.Name + ", " + value);
-            //propertyInfo.SetValue(pr, value);
         }
 
         // Upgrades

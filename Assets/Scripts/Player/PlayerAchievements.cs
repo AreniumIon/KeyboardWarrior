@@ -12,11 +12,12 @@ public class PlayerAchievements : MonoBehaviour
         { AchievementType.Other_Sample_Achievement, new OtherSampleAchievement() },
     };
 
-    private void Start()
+    public void SubscribeAchievements()
     {
         foreach (AchievementInfo ai in achievementInfos.Values)
         {
-            ai.OnStart();
+            if (!ai.unlocked)
+                ai.SubscribeCheck();
         }
     }
 }
