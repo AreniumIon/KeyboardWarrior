@@ -907,6 +907,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3345661150216288150, guid: ef3699285334dd84f81ca40ef8ec0559,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345661150216288150, guid: ef3699285334dd84f81ca40ef8ec0559,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345661150216288150, guid: ef3699285334dd84f81ca40ef8ec0559,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345661150216288150, guid: ef3699285334dd84f81ca40ef8ec0559,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345661150216288150, guid: ef3699285334dd84f81ca40ef8ec0559,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345661150216288150, guid: ef3699285334dd84f81ca40ef8ec0559,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3345661150407725578, guid: ef3699285334dd84f81ca40ef8ec0559,
         type: 3}
       propertyPath: _clickSound

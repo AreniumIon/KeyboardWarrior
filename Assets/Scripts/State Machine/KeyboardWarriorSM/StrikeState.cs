@@ -22,4 +22,6 @@ public class StrikeState : KeyboardWarriorState
     {
         GameSceneUIController.i.SetStrikeCanvas(false);
     }
+
+  
 }

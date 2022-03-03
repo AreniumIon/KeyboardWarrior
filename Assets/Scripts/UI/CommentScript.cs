@@ -53,10 +53,12 @@ public class CommentScript : MonoBehaviour
 
                 case 1:// ButtonType 2 == Sarcasm
                     risk = playerResources.SarcasmRisk; //GameController.i.playerController.playerResources.SarcasmRisk
+                    GameController.i.keyboardWarriorSM.ChangeState<AnticipationState>();
                     break;
 
                 case 2: // ButtonType 2 == Trolling 
                     risk = playerResources.TrollRisk;
+                    GameController.i.keyboardWarriorSM.ChangeState<AnticipationState>();
                     break;
             }
             totalRisk = risk + playerResources.Reputation; //repChange
@@ -73,6 +75,8 @@ public class CommentScript : MonoBehaviour
         commentEvent?.Invoke();
         _profileRoot.AssignNewProfile();
         OneShotSoundController.PlayClip2D(_clickSound, 1f);
+        
+
     }
 
     private void GainPoints()
