@@ -14,9 +14,6 @@ public class TabController : MonoBehaviour
         if (GameController.i.keyboardWarriorSM.CurrentState is MessagesState)
             return;
         GameController.i.keyboardWarriorSM.ChangeState<MessagesState>();
-        SetMessagesButton(true);
-        SetShopButton(true);
-        SetSaveButton(true);
     }
 
     public void ClickShopTab()
@@ -24,9 +21,6 @@ public class TabController : MonoBehaviour
         if (GameController.i.keyboardWarriorSM.CurrentState is ShopState)
             return;
         GameController.i.keyboardWarriorSM.ChangeState<ShopState>();
-        SetMessagesButton(false);
-        SetShopButton(false);
-        SetSaveButton(false);
     }
 
     public void SetMessagesButton(bool active)
