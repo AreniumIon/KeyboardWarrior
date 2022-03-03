@@ -203,11 +203,11 @@ RectTransform:
   m_Children:
   - {fileID: 9007547839111025069}
   m_Father: {fileID: 6312183428311166643}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 752, y: -268}
+  m_AnchoredPosition: {x: 30, y: -206}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4341374927729456373
@@ -480,8 +480,9 @@ GameObject:
   - component: {fileID: 382870560849567753}
   - component: {fileID: 1703545044686095063}
   - component: {fileID: 4279829522707814859}
+  - component: {fileID: 1818158695}
   m_Layer: 5
-  m_Name: Username_txt
+  m_Name: UsernameDisplay_txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -499,7 +500,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6312183428311166643}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -625,6 +626,19 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1818158695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3023049681157809551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d418404d22329c5479db2dd94c6f69a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _usernameText: {fileID: 4279829522707814859}
 --- !u!1 &6312183426302600218
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +923,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6312183427042634203
 GameObject:
@@ -947,7 +961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 29, y: -99.30005}
+  m_AnchoredPosition: {x: 30, y: -99.30005}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6312183427042634207
@@ -1573,8 +1587,8 @@ RectTransform:
   - {fileID: 9085171832462026321}
   - {fileID: 6312183427042634202}
   - {fileID: 6312183426430167665}
-  - {fileID: 382870560849567753}
   - {fileID: 8159306831754845302}
+  - {fileID: 382870560849567753}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1655,3 +1669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693b0e8cf0f17a94ba5c38565325b56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messagesButton: {fileID: 6312183427042634203}
+  shopButton: {fileID: 6312183426430167666}
+  saveButton: {fileID: 1155341755436946456}
