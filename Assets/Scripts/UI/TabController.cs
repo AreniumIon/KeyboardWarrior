@@ -10,15 +10,15 @@ public class TabController : MonoBehaviour
     {
         if (GameController.i.keyboardWarriorSM.CurrentState is MessagesState)
             return;
-        GameController.i.keyboardWarriorSM.ChangeState<MessagesState>();
         OneShotSoundController.PlayClip2D(tabSound, 1f);
+        GameController.i.keyboardWarriorSM.ChangeState<MessagesState>();
     }
 
     public void ClickShopTab()
     {
         if (GameController.i.keyboardWarriorSM.CurrentState is ShopState)
             return;
-        GameController.i.keyboardWarriorSM.ChangeState<ShopState>();
         OneShotSoundController.PlayClip2D(tabSound, 1f);
+        GameController.i.keyboardWarriorSM.ChangeState<ShopState>();
     }
 }

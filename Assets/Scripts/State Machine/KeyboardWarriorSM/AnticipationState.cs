@@ -13,7 +13,7 @@ public class AnticipationState : KeyboardWarriorState
     IEnumerator PeopleTyping()
     {
         Debug.Log("People are Typing...");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(.4f);
         Debug.Log("Troll complete!");
         GameController.i.keyboardWarriorSM.ChangeState<MessagesState>();
     }
