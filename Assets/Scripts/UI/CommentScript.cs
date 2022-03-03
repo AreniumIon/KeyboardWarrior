@@ -26,6 +26,9 @@ public class CommentScript : MonoBehaviour
     PlayerController playerController;
     PlayerResources playerResources;
 
+    //feedback sounds for clicks
+    [SerializeField] AudioClip _clickSound;
+
     private void Start()
     {
         playerController = GameController.i.playerController;
@@ -69,6 +72,7 @@ public class CommentScript : MonoBehaviour
         GainPoints();
         commentEvent?.Invoke();
         _profileRoot.AssignNewProfile();
+        OneShotSoundController.PlayClip2D(_clickSound, 1f);
     }
 
     private void GainPoints()

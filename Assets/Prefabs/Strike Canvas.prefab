@@ -146,6 +146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _titleText: {fileID: 2502560620048543173}
   _warningText: {fileID: 2502560618936944317}
+  strikeSound: {fileID: 8300000, guid: 43ccbf1af025c324c87bcb08eeb61199, type: 3}
+  banSound: {fileID: 8300000, guid: f8e9ac9fe5018e845af0afc6a5f69111, type: 3}
 --- !u!1 &2502560618936944319
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] TextMeshProUGUI descriptionText = null;
     [SerializeField] TextMeshProUGUI costText = null;
     [SerializeField] public UpgradeType upgradeType;
+    [SerializeField] AudioClip buySound;
 
     public void Start()
     {
@@ -37,6 +38,7 @@ public class UpgradeButton : MonoBehaviour
 
             UpdateCostText(upgradeInfo);
         }
+        OneShotSoundController.PlayClip2D(buySound, 1f);
     }
 
     private void UpdateNameText(UpgradeInfo upgradeInfo)

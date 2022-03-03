@@ -8,6 +8,10 @@ public class WarningButton : MonoBehaviour
     [SerializeField] TextMeshProUGUI _titleText;
     [SerializeField] TextMeshProUGUI _warningText;
 
+    //feedback sounds
+    [SerializeField] AudioClip strikeSound;
+    [SerializeField] AudioClip banSound;
+
     void OnEnable()
     {
         UpdateText();
@@ -20,12 +24,14 @@ public class WarningButton : MonoBehaviour
             _titleText.text = "Warning";
             _warningText.text = "You just recieved a strike! \nIf you recive a total of 3, your account will be terminated!" +
             "\n\n\n< Click to Continue> ";
+            OneShotSoundController.PlayClip2D(strikeSound, 1f);
         }
         else
         {
             _titleText.text = "ACCOUNT TERMINATED";
             _warningText.text = "You've been banned! Your points are lost with your account. But you keep your upgrades..." +
             "\n\n\n< Click to Continue> ";
+            OneShotSoundController.PlayClip2D(banSound, 1f);
         }
     }
 
