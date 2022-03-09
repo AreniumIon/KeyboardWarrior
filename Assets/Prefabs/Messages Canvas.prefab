@@ -1337,8 +1337,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3345661152024044521}
   - component: {fileID: 3345661152024044522}
+  - component: {fileID: 8418329744790028720}
   m_Layer: 5
-  m_Name: Conversation_pnl
+  m_Name: Conversation Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,6 +1374,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3345661152024044520}
   m_CullTransparentMesh: 0
+--- !u!114 &8418329744790028720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3345661152024044520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3ae79975f815b43af13cf243e00718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversationText: {fileID: 3345661150216288150}
 --- !u!1 &3345661152026312362
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,6 +2060,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bca63665d95a694bb80d797414d0e9e, type: 3}
+--- !u!224 &3345661150439118686 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1473865398448110197, guid: 8bca63665d95a694bb80d797414d0e9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4186682797353774379}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3345661150540571453 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1473865398348221974, guid: 8bca63665d95a694bb80d797414d0e9e,
@@ -2058,9 +2078,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab993a2500503b47b57a475ce87a45e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &3345661150439118686 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1473865398448110197, guid: 8bca63665d95a694bb80d797414d0e9e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4186682797353774379}
-  m_PrefabAsset: {fileID: 0}
