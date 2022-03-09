@@ -29,6 +29,9 @@ public class ConversationDisplay : MonoBehaviour
 
     public IEnumerator DoConversation()
     {
+        string commentString = ConversationGenerator.CreateNormalComment();
+        // TODO: NPC's have username
+
         yield return null;
     }
 }
