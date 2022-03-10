@@ -6,9 +6,16 @@ using System;
 
 public class CommentScript : MonoBehaviour
 {
+    public enum ButtonType
+    { 
+        Safe,
+        Sarcastic,
+        Troll,
+    }
+
     //[SerializeField] TextMeshProUGUI _buttonText;
     [SerializeField] TextMeshProUGUI _riskText = null;
-    [SerializeField] int buttonType = 0;
+    [SerializeField] ButtonType buttonType = ButtonType.Safe;
     float commentMod = 1f;
     float risk = 0f;
     float totalRisk = 0f;
@@ -51,11 +58,11 @@ public class CommentScript : MonoBehaviour
                 default:// ButtonType Default: Normal 
                     break;
 
-                case 1:// ButtonType 2 == Sarcasm
+                case ButtonType.Sarcastic:
                     risk = playerResources.SarcasmRisk; //GameController.i.playerController.playerResources.SarcasmRisk
                     break;
 
-                case 2: // ButtonType 2 == Trolling 
+                case ButtonType.Troll:
                     risk = playerResources.TrollRisk;
                     break;
             }
@@ -64,14 +71,16 @@ public class CommentScript : MonoBehaviour
             _riskText.text = string.Format("Risk: {0:#.00} % ", totalRisk);
         }
     }
-
-    public static event Action commentEvent;
+    
+    // buttonType
+    public static event Action<ButtonType> commentEvent;
 
     public void Click()
     {
-        GameController.i.keyboardWarriorSM.ChangeState<AnticipationState>();
+        //GameController.i.keyboardWarriorSM.ChangeState<AnticipationState>();
+        
         GainPoints();
-        commentEvent?.Invoke();
+        commentEvent?.Invoke(buttonType);
         _profileRoot.AssignNewProfile();
         OneShotSoundController.PlayClip2D(_clickSound, 1f);
     }
@@ -85,13 +94,13 @@ public class CommentScript : MonoBehaviour
                 //Debug.Log("Generating Normal Comment...");
                 break;
 
-            case 1:// ButtonType 2 == Sarcasm
+            case ButtonType.Sarcastic:
                 //Debug.Log("Deploying Sarcasm...");
                 commentMod = playerResources.SarcasmMod;
                 risk = playerResources.SarcasmRisk;
                 break;
 
-            case 2: // ButtonType 2 == Trolling 
+            case ButtonType.Troll:
                 //Debug.Log("Trolling...");
                 commentMod = playerResources.TrollMod;
                 risk = playerResources.TrollRisk;
@@ -119,12 +128,12 @@ public class CommentScript : MonoBehaviour
         int totalCP = playerResources.CP;
         int followerGain = 0;
 
-        if(buttonType == 1)
+        if(buttonType == ButtonType.Sarcastic)
         {
             //sarcastic follower gain: 5% of current CP
             followerGain += (int)Mathf.Round(totalCP * sarcasmFollowerGain);
         }
-        else if(buttonType == 2)
+        else if(buttonType == ButtonType.Troll)
         {
             //troll follower gain: 10% of current CP
             followerGain += (int)Mathf.Round(totalCP * trollFollowerGain);
@@ -136,7 +145,7 @@ public class CommentScript : MonoBehaviour
 
     void Risk()
     {
-        if (buttonType != 0)
+        if (buttonType != ButtonType.Safe)
         {
             //determine if player is striked for comment
             float diceRoll = UnityEngine.Random.Range(0f, 100f);
@@ -160,7 +169,7 @@ public class CommentScript : MonoBehaviour
                 Debug.Log("Reputation == " + playerResources.Reputation);
 
                 //increase button risk by an amount
-                if (buttonType == 1)
+                if (buttonType == ButtonType.Sarcastic)
                     playerResources.SarcasmRisk += riskAddPerButtonPress;
                 else
                     playerResources.TrollRisk += riskAddPerButtonPress;

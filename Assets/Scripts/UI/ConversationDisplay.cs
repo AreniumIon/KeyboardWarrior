@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static CommentScript;
 
 public class ConversationDisplay : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ConversationDisplay : MonoBehaviour
     private void Start()
     {
         ResetDisplay();
+        CommentScript.commentEvent += StartConversation;
     }
 
     public void ResetDisplay()
@@ -22,16 +24,33 @@ public class ConversationDisplay : MonoBehaviour
         conversationText.text = "@" + GameController.i.playerController.Username + ":";
     }
 
-    public void StartConversation()
+    public void StartConversation(ButtonType buttonType)
     {
-        StartCoroutine(DoConversation());
+        StartCoroutine(DoConversation(buttonType));
     }
 
-    public IEnumerator DoConversation()
+    public IEnumerator DoConversation(ButtonType buttonType)
     {
-        string commentString = ConversationGenerator.CreateNormalComment();
+        string commentString;
+        switch (buttonType)
+        {
+            case ButtonType.Safe: commentString = ConversationGenerator.CreateNormalComment(); break;
+            case ButtonType.Sarcastic: commentString = ConversationGenerator.CreateSarcasticComment(); break;
+            case ButtonType.Troll: commentString = ConversationGenerator.CreateTrollComment(); break;
+            default: throw new System.Exception();
+        }
+        int commentLength = commentString.Length;
         // TODO: NPC's have username
 
-        yield return null;
+        while (commentString != "")
+        {
+            conversationText.text += commentString[0];
+            commentString = commentString.Remove(0, 1);
+            yield return new WaitForSeconds(MESSAGE_TIME / commentLength);
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        ResetDisplay();
     }
 }
