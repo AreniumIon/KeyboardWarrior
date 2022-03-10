@@ -23,11 +23,11 @@ public static class ConversationGenerator
     // Message sent by NPC
     public static string CreateSuccessReply()
     {
-        return "Success";
+        return "!@$@#^!";
     }
     
     public static string CreateStrikeReply()
     {
-        return "Strike";
+        return "I'm reporting you";
     }
 }

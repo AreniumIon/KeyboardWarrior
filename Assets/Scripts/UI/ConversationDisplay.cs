@@ -62,7 +62,10 @@ public class ConversationDisplay : MonoBehaviour
         yield return new WaitForSeconds(RESPONSE_TIME);
         conversationText.text = conversationText.text.Replace(typingString, "");
 
-        string responseString = ConversationGenerator.CreateSuccessReply();
+        bool success = true;
+        string responseString;
+        if (success) responseString = ConversationGenerator.CreateSuccessReply();
+        else responseString = ConversationGenerator.CreateStrikeReply();
         conversationText.text += responseString;
 
         // Reset
