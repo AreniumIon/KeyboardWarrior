@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static CommentScript;
+using System;
 
 public class ConversationDisplay : MonoBehaviour
 {
     public static float MESSAGE_TIME = .5f; // Time it takes for player's message to type out
     public static float PAUSE_TIME = .5f; // Time between player's message and NPC typing
     public static float RESPONSE_TIME = .5f; // Time NPC types for
+    public static float RESET_TIME = 1f; // Time to load new NPC
 
     [SerializeField] TextMeshProUGUI conversationText;
 
@@ -42,6 +44,7 @@ public class ConversationDisplay : MonoBehaviour
         int commentLength = commentString.Length;
         // TODO: NPC's have username
 
+        // Player message
         while (commentString != "")
         {
             conversationText.text += commentString[0];
@@ -49,8 +52,21 @@ public class ConversationDisplay : MonoBehaviour
             yield return new WaitForSeconds(MESSAGE_TIME / commentLength);
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(PAUSE_TIME);
 
+        // NPC is typing...
+        string typingString = "__ is typing...";
+        conversationText.text += "\n" + typingString;
+
+        // NPC response
+        yield return new WaitForSeconds(RESPONSE_TIME);
+        conversationText.text = conversationText.text.Replace(typingString, "");
+
+        string responseString = ConversationGenerator.CreateSuccessReply();
+        conversationText.text += responseString;
+
+        // Reset
+        yield return new WaitForSeconds(RESET_TIME);
         ResetDisplay();
     }
 }
