@@ -1386,7 +1386,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3ae79975f815b43af13cf243e00718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversationText: {fileID: 3345661150216288150}
+  _conversationText: {fileID: 3345661150216288150}
+  _profileRoot: {fileID: 3345661150540571453}
 --- !u!1 &3345661152026312362
 GameObject:
   m_ObjectHideFlags: 0

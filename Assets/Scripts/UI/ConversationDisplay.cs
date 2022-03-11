@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static CommentScript;
+using static CommentOutcomeCalc;
 using System;
 
 public class ConversationDisplay : MonoBehaviour
@@ -11,19 +11,26 @@ public class ConversationDisplay : MonoBehaviour
     public static float MESSAGE_TIME = .5f; // Time it takes for player's message to type out
     public static float PAUSE_TIME = .5f; // Time between player's message and NPC typing
     public static float RESPONSE_TIME = .5f; // Time NPC types for
+    public static float DELAY_STRIKE_TIME = .5f; // Time game waits to give strike
     public static float RESET_TIME = 1f; // Time to load new NPC
 
-    [SerializeField] TextMeshProUGUI conversationText;
+    [SerializeField] TextMeshProUGUI _conversationText;
+
+    [SerializeField] ProfileDisplay _profileRoot;
 
     private void Start()
     {
         ResetDisplay();
         CommentScript.commentEvent += StartConversation;
+
+        // Reset display when returning to Messages state
+        GameController.i.keyboardWarriorSM.ChangeStateEvent += (state) => { if (state is MessagesState) ResetDisplay(); };
     }
 
     public void ResetDisplay()
     {
-        conversationText.text = "@" + GameController.i.playerController.Username + ":";
+        _conversationText.text = "@" + GameController.i.playerController.Username + ":";
+        _profileRoot.AssignNewProfile();
     }
 
     public void StartConversation(ButtonType buttonType)
@@ -47,7 +54,7 @@ public class ConversationDisplay : MonoBehaviour
         // Player message
         while (commentString != "")
         {
-            conversationText.text += commentString[0];
+            _conversationText.text += commentString[0];
             commentString = commentString.Remove(0, 1);
             yield return new WaitForSeconds(MESSAGE_TIME / commentLength);
         }
@@ -56,20 +63,31 @@ public class ConversationDisplay : MonoBehaviour
 
         // NPC is typing...
         string typingString = "__ is typing...";
-        conversationText.text += "\n" + typingString;
+        _conversationText.text += "\n" + typingString;
 
         // NPC response
         yield return new WaitForSeconds(RESPONSE_TIME);
-        conversationText.text = conversationText.text.Replace(typingString, "");
+        _conversationText.text = _conversationText.text.Replace(typingString, "");
 
-        bool success = true;
-        string responseString;
-        if (success) responseString = ConversationGenerator.CreateSuccessReply();
-        else responseString = ConversationGenerator.CreateStrikeReply();
-        conversationText.text += responseString;
+        bool success = CommentOutcomeCalc.RollSuccess(buttonType);
+        string responseString = success ? ConversationGenerator.CreateSuccessReply() : ConversationGenerator.CreateStrikeReply();
+        _conversationText.text += responseString;
 
-        // Reset
-        yield return new WaitForSeconds(RESET_TIME);
-        ResetDisplay();
+        // Success
+        if (success)
+        {
+            CommentOutcomeCalc.OnSuccess(buttonType);
+
+            // Reset
+            yield return new WaitForSeconds(RESET_TIME);
+            ResetDisplay();
+        }
+        // Strike
+        else
+        {
+            yield return new WaitForSeconds(DELAY_STRIKE_TIME);
+            CommentOutcomeCalc.OnStrike(buttonType);
+        }
+
     }
 }

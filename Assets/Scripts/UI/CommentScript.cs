@@ -3,22 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using static CommentOutcomeCalc;
 
 public class CommentScript : MonoBehaviour
 {
-    public enum ButtonType
-    { 
-        Safe,
-        Sarcastic,
-        Troll,
-    }
-
     //[SerializeField] TextMeshProUGUI _buttonText;
     [SerializeField] TextMeshProUGUI _riskText = null;
     [SerializeField] ButtonType buttonType = ButtonType.Safe;
     float commentMod = 1f;
-    float risk = 0f;
-    float totalRisk = 0f;
+    //float risk = 0f;
+    //float totalRisk = 0f;
     float riskPercent = 40f; //higher number == lower percent add
     float riskReduction = 2f;
     float riskAddPerButtonPress = 0.5f;
@@ -38,15 +32,43 @@ public class CommentScript : MonoBehaviour
 
     private void Start()
     {
-        playerController = GameController.i.playerController;
-        playerResources = playerController.playerResources;
+        playerResources = GameController.i.playerController.playerResources;
 
-        playerResources.changeReputationEvent += UpdateButton;
-        playerResources.changeTrollRiskEvent += UpdateButton;
-        playerResources.changeSarcasmRiskEvent += UpdateButton; 
-        UpdateButton(playerController.playerResources.CPPerClick);
+        switch (buttonType)
+        {
+            default:
+            case ButtonType.Safe:
+                break;
+            case ButtonType.Sarcastic:
+                playerResources.changeSarcasmRiskEvent += UpdateButton;
+                GameController.i.keyboardWarriorSM.ChangeStateEvent += (state) => { if (state is MessagesState) UpdateButton(playerResources.SarcasmRisk); };
+                UpdateButton(playerResources.SarcasmRisk);
+                break;
+            case ButtonType.Troll:
+                playerResources.changeTrollRiskEvent += UpdateButton;
+                GameController.i.keyboardWarriorSM.ChangeStateEvent += (state) => { if (state is MessagesState) UpdateButton(playerResources.TrollRisk); };
+                UpdateButton(playerResources.TrollRisk);
+                break;
+        }
     }
 
+    public void UpdateButton(float risk)
+    {
+        if (_riskText != null)
+            _riskText.text = string.Format("Risk: {0:#.00} % ", risk);
+    }
+    
+    // buttonType
+    public static event Action<ButtonType> commentEvent;
+
+    public void Click()
+    {
+        commentEvent?.Invoke(buttonType);
+        OneShotSoundController.PlayClip2D(_clickSound, 1f);
+    }
+
+    /*
+    
     public void UpdateButton(float repChange)
     {
         //_buttonText.text = "+" + pointsPerClick + " Chaos";
@@ -70,19 +92,6 @@ public class CommentScript : MonoBehaviour
 
             _riskText.text = string.Format("Risk: {0:#.00} % ", totalRisk);
         }
-    }
-    
-    // buttonType
-    public static event Action<ButtonType> commentEvent;
-
-    public void Click()
-    {
-        //GameController.i.keyboardWarriorSM.ChangeState<AnticipationState>();
-        
-        GainPoints();
-        commentEvent?.Invoke(buttonType);
-        _profileRoot.AssignNewProfile();
-        OneShotSoundController.PlayClip2D(_clickSound, 1f);
     }
 
     private void GainPoints()
@@ -176,4 +185,5 @@ public class CommentScript : MonoBehaviour
             }
         }
     }
+    */
 }

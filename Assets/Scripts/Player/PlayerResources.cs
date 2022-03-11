@@ -34,35 +34,21 @@ public class PlayerResources : MonoBehaviour
     public int CPPerSecond { get => cpPerSecond; set { cpPerSecond = value; changeCPPerSecondEvent?.Invoke(cpPerSecond); } }
     public event Action<int> changeCPPerSecondEvent;
 
-    //comment type modifiers
-    
-    float trollMod = 2f;
-    public float TrollMod { get => trollMod; set { trollMod = value; changeTrollModEvent?.Invoke(trollMod); } }
-    public event Action<float> changeTrollModEvent;
+    // comment type modifiers
+
+    float safeMod = 1f;
+    public float SafeMod { get => safeMod; set { safeMod = value; changeSafeModEvent?.Invoke(safeMod); } }
+    public event Action<float> changeSafeModEvent;
 
     float sarcasmMod = 1.5f;
     public float SarcasmMod { get => sarcasmMod; set { sarcasmMod = value; changeSarcasmModEvent?.Invoke(sarcasmMod); } }
     public event Action<float> changeSarcasmModEvent;
 
+    float trollMod = 2f;
+    public float TrollMod { get => trollMod; set { trollMod = value; changeTrollModEvent?.Invoke(trollMod); } }
+    public event Action<float> changeTrollModEvent;
+
     // comment risk modifiers
-
-    public static float TrollRiskDefault = 10f;
-    float trollRisk = TrollRiskDefault;
-    public float TrollRisk { get => trollRisk; set { trollRisk = value; changeTrollRiskEvent?.Invoke(trollRisk); } }
-    public event Action<float> changeTrollRiskEvent;
-
-    public bool LowerTrollRisk(float amount)
-    {
-        if (trollRisk <= 0)
-            return false;
-
-        if (trollRisk - amount <= 0)
-            TrollRisk = 0;
-        else
-            TrollRisk -= amount;
-        
-        return true;
-    }
 
     public static float SarcasmRiskDefault = 2f;
     float sarcasmRisk = SarcasmRiskDefault;
@@ -82,6 +68,23 @@ public class PlayerResources : MonoBehaviour
         return true;
     }
 
+    public static float TrollRiskDefault = 10f;
+    float trollRisk = TrollRiskDefault;
+    public float TrollRisk { get => trollRisk; set { trollRisk = value; changeTrollRiskEvent?.Invoke(trollRisk); } }
+    public event Action<float> changeTrollRiskEvent;
+
+    public bool LowerTrollRisk(float amount)
+    {
+        if (trollRisk <= 0)
+            return false;
+
+        if (trollRisk - amount <= 0)
+            TrollRisk = 0;
+        else
+            TrollRisk -= amount;
+
+        return true;
+    }
 
     // followers
 
@@ -101,6 +104,5 @@ public class PlayerResources : MonoBehaviour
     public float FollowerKeepPercent { get => followerKeepPercent; set { followerKeepPercent = value; changeFollowerKeepPercentEvent?.Invoke(followerKeepPercent); } }
     public event Action<float> changeFollowerKeepPercentEvent;
 
-    // TODO: Followers, experts, flags
 
 }
