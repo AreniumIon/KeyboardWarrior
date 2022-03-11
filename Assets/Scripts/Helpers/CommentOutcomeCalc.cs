@@ -107,6 +107,7 @@ public static class CommentOutcomeCalc
 
         //divide reputation by 2
         playerResources.Reputation /= RISK_REDUCTION;
+        Debug.Log("Reputation == " + playerResources.Reputation);
         // dice rolled lower; punish the player with a strike
         playerResources.Strikes += 1;
         GameController.i.keyboardWarriorSM.ChangeState<StrikeState>();

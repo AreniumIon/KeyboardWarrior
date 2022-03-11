@@ -29,7 +29,7 @@ public class ConversationDisplay : MonoBehaviour
 
     public void ResetDisplay()
     {
-        _conversationText.text = "@" + GameController.i.playerController.Username + ":";
+        _conversationText.text = "@" + GameController.i.playerController.Username + ": ";
         _profileRoot.AssignNewProfile();
     }
 
