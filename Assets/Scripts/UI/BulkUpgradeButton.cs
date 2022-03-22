@@ -19,8 +19,11 @@ public class BulkUpgradeButton : UpgradeButton
             upgradeInfo.DoUpgrade();
 
             UpdateCostText(upgradeInfo);
+            UpdateUpgradeLevel(upgradeInfo);
 
-            cost = upgradeInfo.GetCost();
+            cost = upgradeInfo.GetCost(); 
         }
+        //should this be spammed for each upgrade?
+        OneShotSoundController.PlayClip2D(buySound, 1f);
     }
 }
