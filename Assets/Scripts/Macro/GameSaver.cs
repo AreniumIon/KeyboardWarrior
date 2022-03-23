@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameSaver : MonoBehaviour
 {
-    static float AUTO_SAVE_SECONDS = 10f;
+    static float AUTO_SAVE_SECONDS = 60f;
 
     // Have to store in separate script, because SaveController isn't a MonoBehavior, so it doesn't have access to OnApplicationQuit.
     private void OnApplicationQuit()
