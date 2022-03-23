@@ -18,15 +18,45 @@ public class ConversationDisplay : MonoBehaviour
 
     [SerializeField] ProfileDisplay _profileRoot;
 
-    public static bool inConversation = false;
+    private void OnEnable()
+    {
+        CommentScript.commentEvent += StartConversation;
+
+        ConversationController.changeInConversationEvent += (inConversation) => { if (!inConversation) ResetDisplay(); };
+
+        ConversationController.changeConversationStringEvent += UpdateDisplay;
+    }
+
+    private void OnDisable()
+    {
+        CommentScript.commentEvent -= StartConversation;
+
+        ConversationController.changeInConversationEvent -= (inConversation) => { if (!inConversation) ResetDisplay(); };
+
+        ConversationController.changeConversationStringEvent -= UpdateDisplay;
+    }
 
     private void Start()
     {
-        ResetDisplay();
-        CommentScript.commentEvent += StartConversation;
+        // Update display when returning to Messages state
+        GameController.i.keyboardWarriorSM.ChangeStateEvent += (state) =>
+        {
+            if (state is MessagesState)
+            {
+                if (ConversationController.InConversation)
+                    UpdateDisplay(ConversationController.ConversationString);
+                else
+                    ResetDisplay();
+            }
+        };
 
-        // Reset display when returning to Messages state
-        GameController.i.keyboardWarriorSM.ChangeStateEvent += (state) => { if (state is MessagesState) ResetDisplay(); };
+        ResetDisplay();
+    }
+
+    public void StartConversation(ButtonType buttonType)
+    {
+        if (!ConversationController.InConversation)
+            ConversationController.i.DoConversation(buttonType);
     }
 
     public void ResetDisplay()
@@ -35,63 +65,8 @@ public class ConversationDisplay : MonoBehaviour
         _profileRoot.AssignNewProfile();
     }
 
-    public void StartConversation(ButtonType buttonType)
+    public void UpdateDisplay(string str)
     {
-        inConversation = true;
-        StartCoroutine(DoConversation(buttonType));
-    }
-
-    public IEnumerator DoConversation(ButtonType buttonType)
-    {
-        string commentString;
-        switch (buttonType)
-        {
-            case ButtonType.Safe: commentString = ConversationGenerator.CreateNormalComment(); break;
-            case ButtonType.Sarcastic: commentString = ConversationGenerator.CreateSarcasticComment(); break;
-            case ButtonType.Troll: commentString = ConversationGenerator.CreateTrollComment(); break;
-            default: throw new System.Exception();
-        }
-        int commentLength = commentString.Length;
-        // TODO: NPC's have username
-
-        // Player message
-        while (commentString != "")
-        {
-            _conversationText.text += commentString[0];
-            commentString = commentString.Remove(0, 1);
-            yield return new WaitForSeconds(MESSAGE_TIME / commentLength);
-        }
-
-        yield return new WaitForSeconds(PAUSE_TIME);
-
-        // NPC is typing...
-        string typingString = "__ is typing...";
-        _conversationText.text += "\n" + typingString;
-
-        // NPC response
-        yield return new WaitForSeconds(RESPONSE_TIME);
-        _conversationText.text = _conversationText.text.Replace(typingString, "");
-
-        bool success = CommentOutcomeCalc.RollSuccess(buttonType);
-        string responseString = success ? ConversationGenerator.CreateSuccessReply() : ConversationGenerator.CreateStrikeReply();
-        _conversationText.text += responseString;
-
-        // Success
-        if (success)
-        {
-            CommentOutcomeCalc.OnSuccess(buttonType);
-
-            // Reset
-            yield return new WaitForSeconds(RESET_TIME);
-            ResetDisplay();
-        }
-        // Strike
-        else
-        {
-            yield return new WaitForSeconds(DELAY_STRIKE_TIME);
-            CommentOutcomeCalc.OnStrike(buttonType);
-        }
-
-        inConversation = false;
+        _conversationText.text = str;
     }
 }

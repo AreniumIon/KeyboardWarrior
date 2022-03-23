@@ -47,7 +47,7 @@ public class CommentScript : MonoBehaviour
 
     public void Click()
     {
-        if (!ConversationDisplay.inConversation)
+        if (!ConversationController.InConversation)
         {
             commentEvent?.Invoke(buttonType);
             OneShotSoundController.PlayClip2D(_clickSound, 0.5f);
