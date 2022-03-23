@@ -13,6 +13,7 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelText = null;
     [SerializeField] public UpgradeType upgradeType;
     [SerializeField] public AudioClip buySound;
+    [SerializeField] public AudioClip cantBuySound;
 
     public void Start()
     {
@@ -34,14 +35,21 @@ public class UpgradeButton : MonoBehaviour
         UpgradeInfo upgradeInfo = playerUpgrades.upgradeInfos[upgradeType];
         int cost = upgradeInfo.GetCost();
 
+        if(playerResources.CP < cost)
+        {
+            //play sad sound when player is too poor
+            OneShotSoundController.PlayClip2D(cantBuySound, 0.25f);
+        }
+
         if (playerResources.SpendCP(cost))
         {
             upgradeInfo.DoUpgrade();
 
             UpdateCostText(upgradeInfo);
             UpdateUpgradeLevel(upgradeInfo);
+
+            OneShotSoundController.PlayClip2D(buySound, 1f);
         }
-        OneShotSoundController.PlayClip2D(buySound, 1f);
     }
 
     private void UpdateNameText(UpgradeInfo upgradeInfo)

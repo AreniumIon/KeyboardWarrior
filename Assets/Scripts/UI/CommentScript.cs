@@ -48,7 +48,7 @@ public class CommentScript : MonoBehaviour
     public void Click()
     {
         commentEvent?.Invoke(buttonType);
-        OneShotSoundController.PlayClip2D(_clickSound, 1f);
+        OneShotSoundController.PlayClip2D(_clickSound, 0.5f);
     }
 
 }

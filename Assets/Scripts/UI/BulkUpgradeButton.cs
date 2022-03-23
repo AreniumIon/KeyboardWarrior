@@ -14,8 +14,23 @@ public class BulkUpgradeButton : UpgradeButton
         UpgradeInfo upgradeInfo = playerUpgrades.upgradeInfos[upgradeType];
         int cost = upgradeInfo.GetCost();
 
-        while(playerResources.SpendCP(cost))
+        if (playerResources.CP < cost)
         {
+            //play sad sound when player is too poor
+            OneShotSoundController.PlayClip2D(cantBuySound, 0.25f);
+        }
+
+        int timesUpgraded = 0;
+
+        while (playerResources.SpendCP(cost))
+        {
+            if(timesUpgraded < 1)
+            {
+                //play sound if can buy at least one upgrade
+                OneShotSoundController.PlayClip2D(buySound, 1.5f);
+            }
+            timesUpgraded++;
+
             upgradeInfo.DoUpgrade();
 
             UpdateCostText(upgradeInfo);
@@ -23,7 +38,5 @@ public class BulkUpgradeButton : UpgradeButton
 
             cost = upgradeInfo.GetCost(); 
         }
-        //should this be spammed for each upgrade?
-        OneShotSoundController.PlayClip2D(buySound, 1f);
     }
 }
