@@ -18,6 +18,8 @@ public class ConversationDisplay : MonoBehaviour
 
     [SerializeField] ProfileDisplay _profileRoot;
 
+    public static bool inConversation = false;
+
     private void Start()
     {
         ResetDisplay();
@@ -35,6 +37,7 @@ public class ConversationDisplay : MonoBehaviour
 
     public void StartConversation(ButtonType buttonType)
     {
+        inConversation = true;
         StartCoroutine(DoConversation(buttonType));
     }
 
@@ -89,5 +92,6 @@ public class ConversationDisplay : MonoBehaviour
             CommentOutcomeCalc.OnStrike(buttonType);
         }
 
+        inConversation = false;
     }
 }
