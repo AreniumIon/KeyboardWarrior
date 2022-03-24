@@ -10,11 +10,11 @@ public class ConversationController : MonoBehaviour
 
     public static ConversationController i;
 
-    public static float MESSAGE_TIME = .5f; // Time it takes for player's message to type out
-    public static float PAUSE_TIME = .5f; // Time between player's message and NPC typing
-    public static float RESPONSE_TIME = .5f; // Time NPC types for
-    public static float DELAY_STRIKE_TIME = .5f; // Time game waits to give strike
-    public static float RESET_TIME = 1f; // Time to load new NPC
+    public static float MESSAGE_TIME = .3f; // Time it takes for player's message to type out
+    public static float PAUSE_TIME = .2f; // Time between player's message and NPC typing
+    public static float RESPONSE_TIME = .3f; // Time NPC types for
+    public static float DELAY_STRIKE_TIME = .75f; // Time game waits to give strike
+    public static float RESET_TIME = .5f; // Time to load new NPC
 
     static bool inConversation = false;
     public static bool InConversation { get => inConversation; set { inConversation = value; changeInConversationEvent?.Invoke(InConversation); } }
