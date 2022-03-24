@@ -67,7 +67,7 @@ public class UpgradeButton : MonoBehaviour
     protected void UpdateCostText(UpgradeInfo upgradeInfo)
     {
         if (costText != null)
-            costText.text = upgradeInfo.GetCost() + " CP";
+            costText.text = upgradeInfo.GetCost() + ""; //+ " CP";
     }
 
     protected void UpdateUpgradeLevel(UpgradeInfo upgradeInfo)
