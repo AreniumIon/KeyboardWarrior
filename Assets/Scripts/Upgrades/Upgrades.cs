@@ -116,7 +116,7 @@ namespace Upgrades {
     public class MoreInfluencePerFollower : UpgradeInfo
     {
         public override UpgradeType Type => UpgradeType.More_Per_Follower;
-        public override string Name => "More CP Per Follower";
+        public override string Name => "More Chaos Per Follower";
         public override string Description => "Increase Chaos per Follower by .05";
 
         protected override int BaseCost => 15;
