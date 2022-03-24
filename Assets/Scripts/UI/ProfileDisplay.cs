@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ProfileDisplay : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI _usernameText;
+
+    public string username;
+
     //our base scriptable object reference
     public Profile _npcProfile;
 
@@ -30,6 +35,9 @@ public class ProfileDisplay : MonoBehaviour
 
     public void AssignNewProfile()
     {
+        username = UsernameGenerator.GetUsername();
+        _usernameText.text = username;
+
         randHead = Random.Range(0, _npcProfile._head.Length);
         _pfpHead.sprite = _npcProfile._head[randHead];
 
