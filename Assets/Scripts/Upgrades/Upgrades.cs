@@ -28,7 +28,7 @@ namespace Upgrades {
     {
         public override UpgradeType Type => UpgradeType.Sarcasm_Risk;
         public override string Name => "Reduce Sarcasm Risk";
-        public override string Description => "Reduce risk from sarcastic comments by 50%";
+        public override string Description => "Reduce Risk from Sarcastic comments by 50%";
 
         protected override int BaseCost => 5;
 
@@ -64,7 +64,7 @@ namespace Upgrades {
     {
         public override UpgradeType Type => UpgradeType.Troll_Risk;
         public override string Name => "Reduce Troll Risk";
-        public override string Description => "Reduce risk from Troll comments by 50%";
+        public override string Description => "Reduce Risk from Troll comments by 50%";
 
         protected override int BaseCost => 5;
 
@@ -100,7 +100,7 @@ namespace Upgrades {
     {
         public override UpgradeType Type => UpgradeType.Faster_Followers;
         public override string Name => "Faster Followers";
-        public override string Description => "Decrease time between Follower CP gains by 10%";
+        public override string Description => "Decrease time between Follower Chaos gains by 10%";
 
         protected override int BaseCost => 25;
 
@@ -117,7 +117,7 @@ namespace Upgrades {
     {
         public override UpgradeType Type => UpgradeType.More_Per_Follower;
         public override string Name => "More CP Per Follower";
-        public override string Description => "Increase CP per Follower by .05 CP";
+        public override string Description => "Increase Chaos per Follower by .05";
 
         protected override int BaseCost => 15;
 
