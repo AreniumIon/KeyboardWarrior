@@ -43,14 +43,11 @@ public class ConversationDisplay : MonoBehaviour
         {
             if (state is MessagesState)
             {
-                if (ConversationController.InConversation)
-                    UpdateDisplay(ConversationController.ConversationString);
-                else
-                    ResetDisplay();
+                UpdateDisplay(ConversationController.ConversationString);
             }
         };
 
-        ResetDisplay();
+        //ResetDisplay();
     }
 
     public void StartConversation(ButtonType buttonType)

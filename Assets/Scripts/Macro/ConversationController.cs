@@ -47,7 +47,7 @@ public class ConversationController : MonoBehaviour
 
         InConversation = true;
 
-        conversationString = "@" + GameController.i.playerController.Username + ": ";
+        ConversationString = "@" + GameController.i.playerController.Username + ": ";
 
         string commentString;
         switch (buttonType)
