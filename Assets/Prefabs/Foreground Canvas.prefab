@@ -1309,4 +1309,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693b0e8cf0f17a94ba5c38565325b56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tabSound: {fileID: 0}
+  tabSound: {fileID: 8300000, guid: 56acc61854782cc4785f18019a20addf, type: 3}
+  _tabSoundPool: {fileID: 0}
