@@ -17,6 +17,7 @@ public class ChaosTracker : MonoBehaviour
 
     private void SetText(int chaosPoints)
     {
-        _chaosPointsText.text = "Chaos: " + chaosPoints.ToString();
+        //_chaosPointsText.text = "Chaos: " + chaosPoints.ToString();
+        _chaosPointsText.text = ": " + chaosPoints.ToString();
     }
 }

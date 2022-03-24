@@ -24,6 +24,18 @@ public static class UsernameGenerator
         "Awesome",
         "Online",
         "Epic",
+        "Insane",
+        "Flaming",
+        "Firey",
+        "Spicy",
+        "Frozen",
+        "Professional",
+        "Young",
+        "Old",
+        "Creative",
+        "Amateur",
+        "Noob",
+        "Swag",
     };
 
     static List<string> userNouns = new List<string>()
@@ -34,6 +46,17 @@ public static class UsernameGenerator
         "Elephant",
         "Dog",
         "Alien",
+        "Taco",
+        "Burger",
+        "Star",
+        "Gorilla",
+        "Pro",
+        "Hacker",
+        "Programmer",
+        "Artist",
+        "Spy",
+        "Gamer",
+        "Winner",
     };
 
     static int minNum = 0;

@@ -6,13 +6,15 @@ using static CommentOutcomeCalc;
 
 public class ConversationController : MonoBehaviour
 {
+    [SerializeField] ProfileDisplay _npcProfileDisplay;
+
     public static ConversationController i;
 
-    public static float MESSAGE_TIME = .5f; // Time it takes for player's message to type out
-    public static float PAUSE_TIME = .5f; // Time between player's message and NPC typing
-    public static float RESPONSE_TIME = .5f; // Time NPC types for
-    public static float DELAY_STRIKE_TIME = .5f; // Time game waits to give strike
-    public static float RESET_TIME = 1f; // Time to load new NPC
+    public static float MESSAGE_TIME = .3f; // Time it takes for player's message to type out
+    public static float PAUSE_TIME = .2f; // Time between player's message and NPC typing
+    public static float RESPONSE_TIME = .4f; // Time NPC types for
+    public static float DELAY_STRIKE_TIME = .75f; // Time game waits to give strike
+    public static float RESET_TIME = .1f; // Time before allowing player to input
 
     static bool inConversation = false;
     public static bool InConversation { get => inConversation; set { inConversation = value; changeInConversationEvent?.Invoke(InConversation); } }
@@ -36,25 +38,18 @@ public class ConversationController : MonoBehaviour
 
     public void DoConversation(ButtonType buttonType)
     {
-        StartCoroutine(ConversationRunner(buttonType));
-    }
-    
-    private static IEnumerator ConversationRunner(ButtonType buttonType)
-    {
         Debug.Assert(!InConversation, "ConversationController.DoConversation called while already in conversation.");
 
         InConversation = true;
 
-        conversationString = "@" + GameController.i.playerController.Username + ": ";
+        StartCoroutine(ConversationRunner(buttonType, _npcProfileDisplay.username));
+    }
+    
+    private static IEnumerator ConversationRunner(ButtonType buttonType, string npcName)
+    {
+        ConversationString = "@" + GameController.i.playerController.Username + ": ";
 
-        string commentString;
-        switch (buttonType)
-        {
-            case ButtonType.Safe: commentString = ConversationGenerator.CreateNormalComment(); break;
-            case ButtonType.Sarcastic: commentString = ConversationGenerator.CreateSarcasticComment(); break;
-            case ButtonType.Troll: commentString = ConversationGenerator.CreateTrollComment(); break;
-            default: throw new System.Exception();
-        }
+        string commentString = ConversationGenerator.CreatePlayerComment(buttonType);
         int commentLength = commentString.Length;
         // TODO: NPC's have username
 
@@ -69,7 +64,7 @@ public class ConversationController : MonoBehaviour
         yield return new WaitForSeconds(PAUSE_TIME);
 
         // NPC is typing...
-        string typingString = "__ is typing...";
+        string typingString = npcName + " is typing...";
         ConversationString += "\n" + typingString;
 
         // NPC response
@@ -77,7 +72,7 @@ public class ConversationController : MonoBehaviour
         ConversationString = ConversationString.Replace(typingString, "");
 
         bool success = CommentOutcomeCalc.RollSuccess(buttonType);
-        string responseString = success ? ConversationGenerator.CreateSuccessReply() : ConversationGenerator.CreateStrikeReply();
+        string responseString = success ? ConversationGenerator.CreateSuccessReply(buttonType) : ConversationGenerator.CreateStrikeReply();
         ConversationString += responseString;
 
         // Success

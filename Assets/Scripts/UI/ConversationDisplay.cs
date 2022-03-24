@@ -22,7 +22,7 @@ public class ConversationDisplay : MonoBehaviour
     {
         CommentScript.commentEvent += StartConversation;
 
-        ConversationController.changeInConversationEvent += (inConversation) => { if (!inConversation) ResetDisplay(); };
+        ConversationController.changeInConversationEvent += (inConversation) => { if (inConversation) ResetDisplay(); };
 
         ConversationController.changeConversationStringEvent += UpdateDisplay;
     }
@@ -31,7 +31,7 @@ public class ConversationDisplay : MonoBehaviour
     {
         CommentScript.commentEvent -= StartConversation;
 
-        ConversationController.changeInConversationEvent -= (inConversation) => { if (!inConversation) ResetDisplay(); };
+        ConversationController.changeInConversationEvent -= (inConversation) => { if (inConversation) ResetDisplay(); };
 
         ConversationController.changeConversationStringEvent -= UpdateDisplay;
     }
@@ -43,14 +43,11 @@ public class ConversationDisplay : MonoBehaviour
         {
             if (state is MessagesState)
             {
-                if (ConversationController.InConversation)
-                    UpdateDisplay(ConversationController.ConversationString);
-                else
-                    ResetDisplay();
+                UpdateDisplay(ConversationController.ConversationString);
             }
         };
 
-        ResetDisplay();
+        //ResetDisplay();
     }
 
     public void StartConversation(ButtonType buttonType)
