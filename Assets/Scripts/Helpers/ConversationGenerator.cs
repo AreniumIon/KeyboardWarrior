@@ -7,24 +7,7 @@ public static class ConversationGenerator
 {
     static System.Random rnd = new System.Random();
 
-
-    public static string CreateNormalComment()
-    {
-        return "Normal Comment";
-    }
-
-    public static string CreateSarcasticComment()
-    {
-        return "Sarcastic Comment";
-    }
-
-    public static string CreateTrollComment()
-    {
-        return "Troll Comment";
-    }
-
-    // Message sent by NPC
-    static List<string> SUCCESS_CHARS = new List<string>()
+    static List<string> MESSAGE_CHARS = new List<string>()
     {
         " ",
         "!",
@@ -36,7 +19,27 @@ public static class ConversationGenerator
         "&",
         "*",
     };
-    static Dictionary<ButtonType, int> CHARS_BY_RISK = new Dictionary<ButtonType, int>()
+
+    static Dictionary<ButtonType, int> PLAYER_CHARS_BY_RISK = new Dictionary<ButtonType, int>()
+    {
+        {ButtonType.Safe, 7 },
+        {ButtonType.Sarcastic, 10 },
+        {ButtonType.Troll, 15 },
+    };
+
+    public static string CreatePlayerComment(ButtonType buttonType)
+    {
+        int chars = PLAYER_CHARS_BY_RISK[buttonType];
+        string str = "";
+
+        for (int i = 0; i < chars; i++)
+            str += MESSAGE_CHARS[rnd.Next(MESSAGE_CHARS.Count)];
+
+        return str;
+    }
+
+
+    static Dictionary<ButtonType, int> REPLY_CHARS_BY_RISK = new Dictionary<ButtonType, int>()
     {
         {ButtonType.Safe, 7 },
         {ButtonType.Sarcastic, 15 },
@@ -45,11 +48,11 @@ public static class ConversationGenerator
 
     public static string CreateSuccessReply(ButtonType buttonType)
     {
-        int chars = CHARS_BY_RISK[buttonType];
+        int chars = REPLY_CHARS_BY_RISK[buttonType];
         string str = "";
 
         for (int i = 0; i < chars; i++)
-            str += SUCCESS_CHARS[rnd.Next(SUCCESS_CHARS.Count)];
+            str += MESSAGE_CHARS[rnd.Next(MESSAGE_CHARS.Count)];
 
         return str;
     }

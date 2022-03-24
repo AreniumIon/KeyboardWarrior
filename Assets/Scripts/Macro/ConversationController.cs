@@ -49,14 +49,7 @@ public class ConversationController : MonoBehaviour
     {
         ConversationString = "@" + GameController.i.playerController.Username + ": ";
 
-        string commentString;
-        switch (buttonType)
-        {
-            case ButtonType.Safe: commentString = ConversationGenerator.CreateNormalComment(); break;
-            case ButtonType.Sarcastic: commentString = ConversationGenerator.CreateSarcasticComment(); break;
-            case ButtonType.Troll: commentString = ConversationGenerator.CreateTrollComment(); break;
-            default: throw new System.Exception();
-        }
+        string commentString = ConversationGenerator.CreatePlayerComment(buttonType);
         int commentLength = commentString.Length;
         // TODO: NPC's have username
 
