@@ -36,6 +36,23 @@ public static class UsernameGenerator
         "Amateur",
         "Noob",
         "Swag",
+        "Swaggalious",
+        "Sussy",
+        "Sus",
+        "Clever",
+        "Wacky",
+        "Maniac",
+        "Star",
+        "Cat",
+        "Facemelting",
+        "Strange",
+        "Laughing",
+        "Alpha",
+        "Beta",
+        "Sigma",
+        "Enemy",
+        "Humongous",
+        "Sk8er",
     };
 
     static List<string> userNouns = new List<string>()
@@ -57,6 +74,19 @@ public static class UsernameGenerator
         "Spy",
         "Gamer",
         "Winner",
+        "Baka",
+        "Zack",
+        "Platinum",
+        "Star",
+        "Girl",
+        "Boy",
+        "Imposter",
+        "Clown",
+        "Chicken",
+        "Engineer",
+        "Cow",
+        "Shark",
+        "Drip",
     };
 
     static int minNum = 0;
