@@ -6,6 +6,8 @@ using static CommentOutcomeCalc;
 
 public class ConversationController : MonoBehaviour
 {
+    [SerializeField] ProfileDisplay _npcProfileDisplay;
+
     public static ConversationController i;
 
     public static float MESSAGE_TIME = .5f; // Time it takes for player's message to type out
@@ -36,10 +38,10 @@ public class ConversationController : MonoBehaviour
 
     public void DoConversation(ButtonType buttonType)
     {
-        StartCoroutine(ConversationRunner(buttonType));
+        StartCoroutine(ConversationRunner(buttonType, _npcProfileDisplay.username));
     }
     
-    private static IEnumerator ConversationRunner(ButtonType buttonType)
+    private static IEnumerator ConversationRunner(ButtonType buttonType, string npcName)
     {
         Debug.Assert(!InConversation, "ConversationController.DoConversation called while already in conversation.");
 
@@ -69,7 +71,7 @@ public class ConversationController : MonoBehaviour
         yield return new WaitForSeconds(PAUSE_TIME);
 
         // NPC is typing...
-        string typingString = "__ is typing...";
+        string typingString = npcName + " is typing...";
         ConversationString += "\n" + typingString;
 
         // NPC response
