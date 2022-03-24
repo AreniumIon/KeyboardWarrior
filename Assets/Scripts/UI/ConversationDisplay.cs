@@ -22,7 +22,7 @@ public class ConversationDisplay : MonoBehaviour
     {
         CommentScript.commentEvent += StartConversation;
 
-        ConversationController.changeInConversationEvent += (inConversation) => { if (!inConversation) ResetDisplay(); };
+        ConversationController.changeInConversationEvent += (inConversation) => { if (inConversation) ResetDisplay(); };
 
         ConversationController.changeConversationStringEvent += UpdateDisplay;
     }
@@ -31,7 +31,7 @@ public class ConversationDisplay : MonoBehaviour
     {
         CommentScript.commentEvent -= StartConversation;
 
-        ConversationController.changeInConversationEvent -= (inConversation) => { if (!inConversation) ResetDisplay(); };
+        ConversationController.changeInConversationEvent -= (inConversation) => { if (inConversation) ResetDisplay(); };
 
         ConversationController.changeConversationStringEvent -= UpdateDisplay;
     }
