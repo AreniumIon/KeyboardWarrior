@@ -38,15 +38,15 @@ public class ConversationController : MonoBehaviour
 
     public void DoConversation(ButtonType buttonType)
     {
+        Debug.Assert(!InConversation, "ConversationController.DoConversation called while already in conversation.");
+
+        InConversation = true;
+
         StartCoroutine(ConversationRunner(buttonType, _npcProfileDisplay.username));
     }
     
     private static IEnumerator ConversationRunner(ButtonType buttonType, string npcName)
     {
-        Debug.Assert(!InConversation, "ConversationController.DoConversation called while already in conversation.");
-
-        InConversation = true;
-
         ConversationString = "@" + GameController.i.playerController.Username + ": ";
 
         string commentString;
