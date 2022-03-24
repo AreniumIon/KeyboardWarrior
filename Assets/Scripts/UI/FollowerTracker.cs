@@ -17,6 +17,7 @@ public class FollowerTracker : MonoBehaviour
 
     private void SetText(int followerNum)
     {
-        _followerText.text = "Followers: " + followerNum.ToString();
+        //_followerText.text = "Followers: " + followerNum.ToString();
+        _followerText.text = ": " + followerNum.ToString();
     }
 }
