@@ -17,6 +17,6 @@ public class StrikesTracker : MonoBehaviour
 
     private void SetText(int strikePoints)
     {
-        _strikesText.text = "Strikes: " + strikePoints.ToString();
+        _strikesText.text = ": " + strikePoints.ToString();
     }
 }
