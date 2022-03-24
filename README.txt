@@ -14,3 +14,5 @@ Pressing the Sarcastic or Troll comment buttons also can give you followers
 depending on the amount of Chaos you currently have.
 Followers give you more Chaos over time. You can buy upgrades to keep some of the 
 followers over an account termination.
+
+Press the Reset Button found in the Shop tab to reset all values.
