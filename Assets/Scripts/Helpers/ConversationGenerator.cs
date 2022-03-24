@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static CommentOutcomeCalc;
 
 public static class ConversationGenerator
 {
@@ -25,6 +26,7 @@ public static class ConversationGenerator
     // Message sent by NPC
     static List<string> SUCCESS_CHARS = new List<string>()
     {
+        " ",
         "!",
         "@",
         "#",
@@ -34,12 +36,16 @@ public static class ConversationGenerator
         "&",
         "*",
     };
-    static int MIN_SUCCESS_CHARS = 8;
-    static int MAX_SUCCESS_CHARS = 20;
-
-    public static string CreateSuccessReply()
+    static Dictionary<ButtonType, int> CHARS_BY_RISK = new Dictionary<ButtonType, int>()
     {
-        int chars = Random.Range(MIN_SUCCESS_CHARS, MAX_SUCCESS_CHARS);
+        {ButtonType.Safe, 7 },
+        {ButtonType.Sarcastic, 15 },
+        {ButtonType.Troll, 25 },
+    };
+
+    public static string CreateSuccessReply(ButtonType buttonType)
+    {
+        int chars = CHARS_BY_RISK[buttonType];
         string str = "";
 
         for (int i = 0; i < chars; i++)

@@ -79,7 +79,7 @@ public class ConversationController : MonoBehaviour
         ConversationString = ConversationString.Replace(typingString, "");
 
         bool success = CommentOutcomeCalc.RollSuccess(buttonType);
-        string responseString = success ? ConversationGenerator.CreateSuccessReply() : ConversationGenerator.CreateStrikeReply();
+        string responseString = success ? ConversationGenerator.CreateSuccessReply(buttonType) : ConversationGenerator.CreateStrikeReply();
         ConversationString += responseString;
 
         // Success
