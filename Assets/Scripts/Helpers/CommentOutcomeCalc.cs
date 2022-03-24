@@ -12,6 +12,18 @@ public static class CommentOutcomeCalc
         Troll,
     }
 
+    public struct CommentReward
+    {
+        public CommentReward(int chaos, int followers)
+        {
+            this.chaos = chaos;
+            this.followers = followers;
+        }
+
+        public int chaos;
+        public int followers;
+    }
+
     static float SARCASM_FOLLOWER_GAIN = 0.01f;
     static float TROLL_FOLLOWER_GAIN = 0.05f;
     static float RISK_PERCENT = 40f;
@@ -34,14 +46,16 @@ public static class CommentOutcomeCalc
         return diceRoll >= risk;
     }
 
-    public static void OnSuccess(ButtonType buttonType)
+    public static CommentReward OnSuccess(ButtonType buttonType)
     {
-        GainPoints(buttonType);
-        AddFollowers(buttonType);
+        int chaos = GainPoints(buttonType);
+        int followers = AddFollowers(buttonType);
         GainRisk(buttonType);
+
+        return new CommentReward(chaos, followers);
     }
 
-    private static void GainPoints(ButtonType buttonType)
+    private static int GainPoints(ButtonType buttonType)
     {
         PlayerResources playerResources = GameController.i.playerController.playerResources;
 
@@ -60,9 +74,11 @@ public static class CommentOutcomeCalc
 
         //add points to player's total
         playerResources.CP += gainThisTurn;
+
+        return gainThisTurn;
     }
 
-    private static void AddFollowers(ButtonType buttonType)
+    private static int AddFollowers(ButtonType buttonType)
     {
         PlayerResources playerResources = GameController.i.playerController.playerResources;
 
@@ -78,6 +94,8 @@ public static class CommentOutcomeCalc
         }
 
         playerResources.Followers += followerGain;
+
+        return followerGain;
     }
 
     private static void GainRisk(ButtonType buttonType)

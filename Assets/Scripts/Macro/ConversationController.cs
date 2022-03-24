@@ -78,7 +78,9 @@ public class ConversationController : MonoBehaviour
         // Success
         if (success)
         {
-            CommentOutcomeCalc.OnSuccess(buttonType);
+            CommentReward reward = CommentOutcomeCalc.OnSuccess(buttonType);
+
+            ConversationString += "\n\n[+" + reward.chaos + " Chaos, +" + reward.followers + " Followers]"; 
 
             // Reset
             yield return new WaitForSeconds(RESET_TIME);
