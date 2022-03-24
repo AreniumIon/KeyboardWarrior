@@ -65,11 +65,11 @@ public class ConversationController : MonoBehaviour
 
         // NPC is typing...
         string typingString = npcName + " is typing...";
-        ConversationString += "\n" + typingString;
+        ConversationString += "\n\n" + typingString;
 
         // NPC response
         yield return new WaitForSeconds(RESPONSE_TIME);
-        ConversationString = ConversationString.Replace(typingString, "");
+        ConversationString = ConversationString.Replace(typingString, npcName + ": ");
 
         bool success = CommentOutcomeCalc.RollSuccess(buttonType);
         string responseString = success ? ConversationGenerator.CreateSuccessReply(buttonType) : ConversationGenerator.CreateStrikeReply();
