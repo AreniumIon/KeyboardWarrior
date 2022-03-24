@@ -11,6 +11,9 @@ public static class SaveController
         PlayerController pc = GameController.i.playerController;
         PlayerResources pr = pc.playerResources;
 
+        // Username
+        PlayerPrefs.SetString("Username", pc.Username);
+
         // Resources
         foreach (PropertyInfo propertyInfo in pr.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
         {
@@ -44,6 +47,9 @@ public static class SaveController
     {
         PlayerController pc = GameController.i.playerController;
         PlayerResources pr = pc.playerResources;
+
+        // Username
+        pc.Username = PlayerPrefs.GetString("Username");
 
         // Resources
         foreach (PropertyInfo propertyInfo in pr.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
